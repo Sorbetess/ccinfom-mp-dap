@@ -38,7 +38,10 @@
 
 	<% 
 		Booking book = new Booking();
-		book.getBookings();
+        book.getBookings();
+        book.getEmails();
+        book.getGroups();
+        book.getOfferings();
 	%>
         
 	<!-- Page Preloder -->
@@ -73,7 +76,7 @@
 						<h2 class="p-0">We'll look for what you want.</h2>
 						
                         
-						<form name="createbooking" action="gl_create/gl_createprocessing_submit.jsp" method="POST">
+						<form name="updatebooking" action="gl_update/gl_updateprocessing_submit.jsp" method="POST">
 							<br>
                             <label for="bookingsselector">Booking ID</label>
                             <select name="bookingsselector">
@@ -166,7 +169,7 @@
 							</select>
 
 							
-							
+							<br>
 							<input type="submit" class="btn btn-secondary site-btn my-btn" name="book" value="Create Booking">
 							
                         </form>

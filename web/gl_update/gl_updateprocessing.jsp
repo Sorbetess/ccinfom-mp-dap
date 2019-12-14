@@ -170,7 +170,7 @@
 
 							
 							<br>
-							<input type="submit" class="btn btn-secondary site-btn my-btn" name="book" value="Create Booking">
+							<input type="submit" class="btn btn-secondary site-btn my-btn" name="book" value="Update booking">
 							
                         </form>
                         

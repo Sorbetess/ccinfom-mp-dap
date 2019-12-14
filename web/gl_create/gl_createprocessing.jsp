@@ -77,7 +77,9 @@
 						<h2 class="p-0">We'll look for what you want.</h2>
 						
                         
-                        <form name="createbooking" action="gl_create/gl_createprocessing_submit.jsp" method="POST">
+						<form name="createbooking" action="gl_create/gl_createprocessing_submit.jsp" method="POST">
+							<br>
+                            <label for="offeringselector">Dining offering</label>
                             <select name="offeringselector">
 									<%                            
 						
@@ -136,7 +138,7 @@
 
 							<br>
                             <label for="userselector">User email</label>
-							<select name="userselecctor">
+							<select name="userselector">
 								<%                            
 								int usersize = book.emails.size();
 								for(int i = 0; i < usersize; i++) { %>

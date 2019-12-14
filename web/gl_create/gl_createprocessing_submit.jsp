@@ -56,7 +56,6 @@
         int diningoffid = Integer.parseInt(request.getParameter("offeringselector"));
         
         Booking b = new Booking();
-        b.getNextBooking();
         b.cost = cost;
         b.bookdate = bookdate;
         b.confirmdate = confirmdate;
@@ -64,16 +63,17 @@
         b.rating = rating;
         b.feedback = feedback;
         b.groupid = groupid;
+        b.email = email;
         b.diningoffid = diningoffid;
         
         b.book();
         
         String redirectURL;
         if (b.status==1)
-                redirectURL = "gl_create_success.html";
+                redirectURL = "http://localhost:8084/Dining_Accommodation/gl_create/gl_create_success.html";
         else
-                redirectURL = "gl_create_fail.html";
-        response.sendRedirect(redurectURL);
+                redirectURL = "http://localhost:8084/Dining_Accommodation/gl_create/gl_create_fail.html";
+        response.sendRedirect(redirectURL);
         
 
     %>

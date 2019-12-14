@@ -15,7 +15,6 @@ public class Booking {
     public ArrayList <String> groups = new ArrayList<String>();
     public ArrayList <String> emails = new ArrayList<String>();
     
-    public int bookingid;
     public double cost;
     public String bookdate;
     public String confirmdate;
@@ -29,44 +28,45 @@ public class Booking {
     public int status;
     public int nextBooking;
     
-    public void getNextBooking() {
-        try {
-            // 1. Connect to the database
-            Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=p@ssword");
-            // 2. Prepare the SQL Statement
-            PreparedStatement stmt = conn.prepareStatement("SELECT MAX(bookingid) as maxbook FROM diningaccommodations.bookings;");    
-        
-            // 3. Execute the SQL Statement
-            ResultSet rs = stmt.executeQuery();
-            // 4. Process the results
-            nextBooking = rs.getInt("maxbook") + 1;
-           
-            // 5. Disconnect
-            stmt.close();
-            conn.close();
-        } catch (Exception e) {
-            System.out.println("something went wrong" + e.getMessage());
-        }
-    }
+   
     
     public void book() {
         try {
             // 1. Connect to the database
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn;
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=p@ssword");
             // 2. Prepare the SQL Statement
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO BOOKINGS (bookingid, cost, bookdate, confirmdate, paiddate, rating, feedback, email, groupid, diningoffid) VALUES (?,?,?,?,?,?,?,?,?,?)");    
-            stmt.setInt(1, bookingid);
-            stmt.setDouble(2, cost);
-            stmt.setString(3, bookdate);
-            stmt.setString(4, confirmdate);
-            stmt.setString(5, paiddate);
-            stmt.setInt(6, rating);
-            stmt.setString(7, feedback);
-            stmt.setString(8, email);
-            stmt.setInt(9, groupid);
-            stmt.setInt(10, diningoffid);
+            getNextBooking();  
+            PreparedStatement stmt ;
+            
+            if(groupid != 0){
+                stmt = conn.prepareStatement("INSERT INTO BOOKINGS (bookingid, cost, bookdate, confirmdate, paiddate, rating, feedback, email, groupid, diningofferid) VALUES (?,?,?,?,?,?,?,?,?,?)");    
+                stmt.setInt(1, nextBooking);
+                stmt.setDouble(2, cost);
+                stmt.setString(3, bookdate);
+                stmt.setString(4, confirmdate);
+                stmt.setString(5, paiddate);
+                stmt.setInt(6, rating);
+                stmt.setString(7, feedback);
+                stmt.setString(8, email);
+                stmt.setInt(9, groupid);
+                stmt.setInt(10, diningoffid);
+            }
+            else {
+                stmt = conn.prepareStatement("INSERT INTO BOOKINGS (bookingid, cost, bookdate, confirmdate, paiddate, rating, feedback, email,diningofferid) VALUES (?,?,?,?,?,?,?,?,?)");
+                
+                stmt.setInt(1, nextBooking);
+                stmt.setDouble(2, cost);
+                stmt.setString(3, bookdate);
+                stmt.setString(4, confirmdate);
+                stmt.setString(5, paiddate);
+                stmt.setInt(6, rating);
+                stmt.setString(7, feedback);
+                stmt.setString(8, email);
+                stmt.setInt(9, diningoffid);
+            }
+            
             
             
             
@@ -78,7 +78,7 @@ public class Booking {
             stmt.close();
             conn.close();
         } catch (Exception e) {
-            System.out.println("something went wrong" + e.getMessage());
+            System.out.println("something went wrong: " + e.getMessage());
             status=0;
         }
     }
@@ -125,7 +125,7 @@ public class Booking {
             stmt.close();
             conn.close();
         } catch (Exception e) {
-            System.out.println("something went wrong" + e.getMessage());
+            System.out.println("something went wrong: " + e.getMessage());
         }              
     }
     
@@ -149,18 +149,43 @@ public class Booking {
             stmt.close();
             conn.close();
         } catch (Exception e) {
-            System.out.println("something went wrong" + e.getMessage());
+            System.out.println("something went wrong: " + e.getMessage());
         }              
+    }
+    
+     public void getNextBooking() {
+     
+        try {
+            // 1. Connect to the database
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            Connection conn;
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=p@ssword");
+            // 2. Prepare the SQL Statement
+            PreparedStatement stmt = conn.prepareStatement("SELECT MAX(bookingid) as maxbook FROM diningaccommodations.bookings");
+            // 3. Execute the SQL Statement
+            ResultSet rs = stmt.executeQuery();
+            // 4. Process the results
+            if(rs.next())
+                nextBooking = rs.getInt("maxbook") + 1;
+            
+            // 5. Disconnect
+            stmt.close();
+            conn.close();
+        } catch (Exception e) {
+            System.out.println("something went wrong: " + e.getMessage());
+        }
+        
     }
     
     
     public static void main(String args[]) {
         Booking book = new Booking();
-        book.getOfferings();
-        
-        book.getGroups();
-        
-        book.getEmails();
+//        book.getOfferings();
+//        
+//        book.getGroups();
+//        
+//        book.getEmails();
+//        book.getNextBooking();
     }
 }
 

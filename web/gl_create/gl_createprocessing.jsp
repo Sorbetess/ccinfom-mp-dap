@@ -14,6 +14,7 @@
 	<meta name="description" content="Pulse Restaurant HTML Template">
 	<meta name="keywords" content="pulse, restaurant, creative, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base href="..">
 	<!-- Favicon -->   
 	<link href="img/favicon.ico" rel="shortcut icon"/>
 

@@ -39,6 +39,8 @@
 	<% 
 		Booking book = new Booking();
 		book.getOfferings();
+		book.getGroups();
+		book.getEmails();
    
 	%>
         
@@ -75,19 +77,76 @@
 						<h2 class="p-0">We'll look for what you want.</h2>
 						
                         
-                        <form name="offeringselectorform" action="" method="POST">
+                        <form name="createbooking" action="gl_create/gl_createprocessing_submit.jsp" method="POST">
                             <select name="offeringselector">
-								<% 
-                                                                    
-									int i;
+									<%                            
+						
 									int size = book.offers.size();
-									for(i = 0; i < size; i++) { %>
+									for(int i = 0; i < size; i++) { %>
 										<option value="<%=book.offers.get(i)%>"> <%=book.offers.get(i)%> </option>
 									<% }
 									%>
-
-								
 							</select>
+							<br>
+                            <label for="cost">Cost</label>
+							<input type="text" class="form-control" id="cost" placeholder="Cost" name ="cost">
+							
+							<br>
+                            <label for="bookdate">Book date</label>
+							<input type="text" class="form-control" id="bookdate" placeholder="YYYY-MM-DD" name ="bookdate">
+							
+							<br>
+                            <label for="confirmdate">Confirm date</label>
+							<input type="text" class="form-control" id="confirmdate" placeholder="YYYY-MM-DD" name ="confirmdate">
+
+							<br>
+                            <label for="paiddate">Paid date</label>
+							<input type="text" class="form-control" id="paiddate" placeholder="YYYY-MM-DD" name ="paiddate">
+
+							<br>
+                            <label for="feedback">Feedback</label>
+							<input type="text" class="form-control" id="confirmdate" placeholder="Feedback" name ="feedback">
+
+							<br>
+                            <label for="rating">Rating</label>
+							<select name="rating">
+								<option value=1>1</option>
+								<option value=2>2</option>
+								<option value=3>3</option>
+								<option value=4>4</option>
+								<option value=5>5</option>
+								<option value=6>6</option>
+								<option value=7>7</option>
+								<option value=8>8</option>
+								<option value=9>9</option>
+								<option value=10>10</option>
+							</select>
+							
+							<br>
+                            <label for="groupselector">Group booking</label>
+							<select name="groupselector">
+								<option value=0>Not a group booking</option>
+								<%                            
+								int groupsize = book.groups.size();
+								for(int i = 0; i < groupsize; i++) { %>
+									<option value="<%=book.groups.get(i)%>"> <%=book.groups.get(i)%> </option>
+								<% }
+								%>
+							</select>
+
+							<br>
+                            <label for="userselector">User email</label>
+							<select name="userselecctor">
+								<%                            
+								int usersize = book.emails.size();
+								for(int i = 0; i < usersize; i++) { %>
+									<option value="<%=book.emails.get(i)%>"> <%=book.emails.get(i)%> </option>
+								<% }
+								%>
+							</select>
+							
+							<input type="submit" class="btn btn-secondary site-btn my-btn" name="book" value="Create Booking">
+							
                         </form>
                         
 					</div>

@@ -46,32 +46,21 @@ public class Booking {
             getNextBooking();  
             PreparedStatement stmt ;
             
-            if(groupid != 0){
-                stmt = conn.prepareStatement("INSERT INTO BOOKINGS (bookingid, cost, bookdate, confirmdate, paiddate, rating, feedback, email, groupid, diningofferid) VALUES (?,?,?,?,?,?,?,?,?,?)");    
-                stmt.setInt(1, nextBooking);
-                stmt.setDouble(2, cost);
-                stmt.setString(3, bookdate);
-                stmt.setString(4, confirmdate);
-                stmt.setString(5, paiddate);
-                stmt.setInt(6, rating);
-                stmt.setString(7, feedback);
-                stmt.setString(8, email);
+            stmt = conn.prepareStatement("INSERT INTO BOOKINGS (bookingid, cost, bookdate, confirmdate, paiddate, rating, feedback, email, groupid, diningofferid) VALUES (?,?,?,?,?,?,?,?,?,?)");    
+            stmt.setInt(1, nextBooking);
+            stmt.setDouble(2, cost);
+            stmt.setString(3, bookdate);
+            stmt.setString(4, confirmdate);
+            stmt.setString(5, paiddate);
+            stmt.setInt(6, rating);
+            stmt.setString(7, feedback);
+            stmt.setString(8, email);
+            if(groupid != 0)
                 stmt.setInt(9, groupid);
-                stmt.setInt(10, diningoffid);
-            }
-            else {
-                stmt = conn.prepareStatement("INSERT INTO BOOKINGS (bookingid, cost, bookdate, confirmdate, paiddate, rating, feedback, email,diningofferid) VALUES (?,?,?,?,?,?,?,?,?)");
-                
-                stmt.setInt(1, nextBooking);
-                stmt.setDouble(2, cost);
-                stmt.setString(3, bookdate);
-                stmt.setString(4, confirmdate);
-                stmt.setString(5, paiddate);
-                stmt.setInt(6, rating);
-                stmt.setString(7, feedback);
-                stmt.setString(8, email);
-                stmt.setInt(9, diningoffid);
-            }
+            else 
+                stmt.setNull(9, Types.INTEGER);
+            stmt.setInt(9, groupid);
+            stmt.setInt(10, diningoffid);
             
             
             
@@ -99,19 +88,47 @@ public class Booking {
             getNextBooking();  
             PreparedStatement stmt = conn.prepareStatement("UPDATE bookings SET cost = ?, bookdate = ?, confirmdate = ?, savedate = ?, canceldate = ?, refunddate = ?, paiddate = ?, rating = ?, feedback = ?, email = ?, groupid = ?, diningofferid = ? WHERE bookingid = ?") ;
             
-            stmt.setDouble(1, cost);
-            stmt.setString(2, bookdate);
-            stmt.setString(3, confirmdate);
-            stmt.setString(4, savedate);
-            stmt.setString(5, canceldate);
-            stmt.setString(6, refunddate);
-            stmt.setString(7, paiddate);
-            stmt.setInt(8, rating);
-            stmt.setString(9, feedback);
-            stmt.setString(10, email);
-            stmt.setInt(11, groupid);
-            stmt.setInt(12, diningoffid);
-            stmt.setInt(13, bookingid);
+//            if(groupid != 0){
+//                stmt = conn.prepareStatement("UPDATE bookings SET cost = ?, bookdate = ?, confirmdate = ?, savedate = ?, canceldate = ?, refunddate = ?, paiddate = ?, rating = ?, feedback = ?, email = ?, groupid = ?, diningofferid = ? WHERE bookingid = ?") ; 
+//                stmt.setDouble(1, cost);
+//                stmt.setString(2, bookdate);
+//                stmt.setString(3, confirmdate);
+//                stmt.setString(4, savedate);
+//                stmt.setString(5, canceldate);
+//                stmt.setString(6, refunddate);
+//                stmt.setString(7, paiddate);
+//                stmt.setInt(8, rating);
+//                stmt.setString(9, feedback);
+//                stmt.setString(10, email);
+//                stmt.setInt(11, groupid);
+//                stmt.setInt(12, diningoffid);
+//                stmt.setInt(13, bookingid);
+//            }
+//            else {
+//                
+//                
+//               
+//            }
+            stmt = conn.prepareStatement("UPDATE bookings SET cost = ?, bookdate = ?, confirmdate = ?, savedate = ?, canceldate = ?, refunddate = ?, paiddate = ?, rating = ?, feedback = ?, email = ?, groupid = ?, diningofferid = ? WHERE bookingid = ?") ; 
+                stmt.setDouble(1, cost);
+                stmt.setString(2, bookdate);
+                stmt.setString(3, confirmdate);
+                stmt.setString(4, savedate);
+                stmt.setString(5, canceldate);
+                stmt.setString(6, refunddate);
+                stmt.setString(7, paiddate);
+                stmt.setInt(8, rating);
+                stmt.setString(9, feedback);
+                stmt.setString(10, email);
+            
+                if(groupid != 0)
+                     stmt.setInt(11, groupid);
+                else 
+                    stmt.setNull(11, Types.INTEGER);
+                stmt.setInt(12, diningoffid);
+                stmt.setInt(13, bookingid);
+            
+            
              
   
             // 3. Execute the SQL Statement

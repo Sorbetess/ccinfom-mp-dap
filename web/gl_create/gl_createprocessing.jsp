@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import = "DiningAccommodation.*, java.util.*" %>
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -34,6 +35,14 @@
 
 </head>
 <body>
+
+	<% 
+		Booking book = new Booking();
+		book.getOfferings();
+   
+	%>
+        
+        <h1><%book.offers.get(1);%>asdas</h1>
 	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
@@ -63,16 +72,22 @@
 				<div class="col-lg-6 offset-lg-6 featured">
 					<div class="section-title st-no-style text-left">
 						<i class="flaticon-022-tray"></i>
-                        <h2 class="p-0">We'll look for what you want.</h2>
+						<h2 class="p-0">We'll look for what you want.</h2>
+						
                         
-                        <form>
-                            <br>
-                            <label for="firstname">Cost</label>
-                            <input type="text" class="form-control" id="firstname" placeholder="Firstname" name ="firstname">
+                        <form name="offeringselectorform" action="" method="POST">
+                            <select name="offeringselector">
+								<% 
+                                                                    
+									int i;
+									int size = book.offers.size();
+									for(i = 0; i < size; i++) { %>
+										<option value="<%=book.offers.get(i)%>"> <%=book.offers.get(i)%> </option>
+									<% }
+									%>
 
-                            <br>
-                            <label for="bookdate">Booking Day</label>
-                            <input type="date" class="col-md-12 border rounded my-date" name="bookdate" id="bookdate">
+								
+							</select>
                         </form>
                         
 					</div>
@@ -82,325 +97,6 @@
 		</div>
 	</section>
 	<!-- Featured sectoon end -->
-
-
-	<!-- Menu section -->
-	<section class="mp-menu-section spad">
-		<div class="container">
-			<div class="section-title">
-				<i class="flaticon-022-tray"></i>
-				<h2>Our Menu</h2>
-			</div>
-			<ul class="mp-menu-tab-nav nav nav-tabs" role="tablist">
-				<li class="nav-item">
-					<a class="nav-link active" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">
-						<i class="flaticon-005-coffee-1"></i>
-						<div class="mpm-text">
-							<h5>Breakfast</h5>
-							<p>Weekdays  8:30a.m. — 11:30a.m.</p>
-						</div>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">
-						<i class="flaticon-013-salad"></i>
-						<div class="mpm-text">
-							<h5>Brunch</h5>
-							<p>Weekdays  8:30a.m. — 11:30a.m.</p>
-						</div>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false">
-						<i class="flaticon-008-soup"></i>
-						<div class="mpm-text">
-							<h5>Lunch</h5>
-							<p>Weekdays  8:30a.m. — 11:30a.m.</p>
-						</div>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false">
-						<i class="flaticon-018-lobster"></i>
-						<div class="mpm-text">
-							<h5>Dinner</h5>
-							<p>Weekdays  8:30a.m. — 11:30a.m.</p>
-						</div>
-					</a>
-				</li>
-			</ul>
-			<div class="tab-content menu-tab-content">
-				<!-- single tab content -->
-				<div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="tab-1">
-					<div class="row menu-dark">
-						<div class="col-lg-6">
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Scrambled Eggs with ham</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$9.00</div>
-								</div>
-							</div>
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Scrambled Eggs in Puff Pastry</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$11.00</div>
-								</div>
-							</div>
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Eggs Benedict</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$6.00</div>
-								</div>
-							</div>
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Soft-Boiled Organic Egg</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$8.00</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Scrambled Eggs with ham</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$9.00</div>
-								</div>
-							</div>
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Scrambled Eggs in Puff Pastry</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$11.00</div>
-								</div>
-							</div>
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Eggs Benedict</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$6.00</div>
-								</div>
-							</div>
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Soft-Boiled Organic Egg</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$8.00</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- single tab content -->
-				<div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="tab-2">
-					<div class="row menu-dark">
-						<div class="col-lg-6">
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Scrambled Eggs with ham</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$9.00</div>
-								</div>
-							</div>
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Scrambled Eggs in Puff Pastry</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$11.00</div>
-								</div>
-							</div>
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Eggs Benedict</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$6.00</div>
-								</div>
-							</div>
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Soft-Boiled Organic Egg</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$8.00</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Scrambled Eggs with ham</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$9.00</div>
-								</div>
-							</div>
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Scrambled Eggs in Puff Pastry</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$11.00</div>
-								</div>
-							</div>
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Eggs Benedict</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$6.00</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- single tab content -->
-				<div class="tab-pane fade" id="tab-3" role="tabpanel" aria-labelledby="tab-3">
-					<div class="row menu-dark">
-						<div class="col-lg-6">
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Scrambled Eggs with ham</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$9.00</div>
-								</div>
-							</div>
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Scrambled Eggs in Puff Pastry</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$11.00</div>
-								</div>
-							</div>
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Eggs Benedict</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$6.00</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Scrambled Eggs with ham</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$9.00</div>
-								</div>
-							</div>
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Scrambled Eggs in Puff Pastry</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$11.00</div>
-								</div>
-							</div>
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Eggs Benedict</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$6.00</div>
-								</div>
-							</div>
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Soft-Boiled Organic Egg</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$8.00</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- single tab content -->
-				<div class="tab-pane fade" id="tab-4" role="tabpanel" aria-labelledby="tab-4">
-					<div class="row menu-dark">
-						<div class="col-lg-6">
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Scrambled Eggs with ham</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$9.00</div>
-								</div>
-							</div>
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Scrambled Eggs in Puff Pastry</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$11.00</div>
-								</div>
-							</div>
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Eggs Benedict</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$6.00</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Scrambled Eggs with ham</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$9.00</div>
-								</div>
-							</div>
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Scrambled Eggs in Puff Pastry</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$11.00</div>
-								</div>
-							</div>
-							<!-- menu item -->
-							<div class="menu-item">
-								<h5>Eggs Benedict</h5>
-								<div class="mi-meta">
-									<p>with wild mushrooms and asparagus</p>
-									<div class="menu-price">$6.00</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Menu section end -->
-
-
-	
-
-
-	
-
 
 
 	<!--====== Javascripts & Jquery ======-->

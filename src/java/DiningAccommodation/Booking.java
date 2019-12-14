@@ -14,10 +14,15 @@ public class Booking {
     public ArrayList <String> offers = new ArrayList<String>();
     public ArrayList <String> groups = new ArrayList<String>();
     public ArrayList <String> emails = new ArrayList<String>();
+    public ArrayList <String> bookings = new ArrayList<String>();
     
+    public int bookingid;
     public double cost;
     public String bookdate;
     public String confirmdate;
+    public String savedate;
+    public String canceldate;
+    public String refunddate;
     public String paiddate;
     public int rating;
     public String feedback;
@@ -27,6 +32,7 @@ public class Booking {
     
     public int status;
     public int nextBooking;
+    
     
    
     
@@ -82,6 +88,48 @@ public class Booking {
             status=0;
         }
     }
+    
+    public void update() {
+        try {
+            // 1. Connect to the database
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            Connection conn;
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=p@ssword");
+            // 2. Prepare the SQL Statement
+            getNextBooking();  
+            PreparedStatement stmt = conn.prepareStatement("UPDATE bookings SET cost = ?, bookdate = ?, confirmdate = ?, savedate = , canceldate = ?, refunddate = ?, paiddate = ?, rating = ?, feedback = ?, email = ?, groupid = ?, diningofferid = ? WHERE bookingid = ?") ;
+            
+            stmt.setDouble(1, cost);
+            stmt.setString(2, bookdate);
+            stmt.setString(3, confirmdate);
+            stmt.setString(4, savedate);
+            stmt.setString(5, canceldate);
+            stmt.setString(6, refunddate);
+            stmt.setString(7, paiddate);
+            stmt.setInt(8, rating);
+            stmt.setString(9, feedback);
+            stmt.setString(10, email);
+            stmt.setInt(11, groupid);
+            stmt.setInt(12, diningoffid);
+            stmt.setInt(13, bookingid);
+             
+  
+            // 3. Execute the SQL Statement
+            stmt.executeUpdate();
+            // 4. Process the results
+            status=1;
+            // 5. Disconnect
+            stmt.close();
+            conn.close();
+        } catch (Exception e) {
+            System.out.println("something went wrong: " + e.getMessage());
+            status=0;
+        }
+    }
+    
+    
+    
+    
     public void getOfferings() {
         try {
             // 1. Connect to the database
@@ -120,6 +168,28 @@ public class Booking {
             while (rs.next()) {
                 groups.add(rs.getString("groupid"));
                 System.out.println(groups.get(groups.size()-1));
+            }
+            // 5. Disconnect
+            stmt.close();
+            conn.close();
+        } catch (Exception e) {
+            System.out.println("something went wrong" + e.getMessage());
+        }              
+    }
+    
+    public void getBookings() {
+        try {
+            // 1. Connect to the database
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            Connection conn;
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=p@ssword");
+            // 2. Prepare the SQL Statement
+            PreparedStatement stmt = conn.prepareStatement("SELECT bookingid AS bookid FROM diningaccommodations.bookings ORDER BY bookid;");
+            ResultSet rs = stmt.executeQuery();
+            // 4. Process the results
+            bookings.clear();
+            while (rs.next()) {
+                bookings.add(rs.getString("bookid"));
             }
             // 5. Disconnect
             stmt.close();

@@ -15,19 +15,19 @@ public class Booking {
     public ArrayList <String> groups = new ArrayList<String>();
     public ArrayList <String> emails = new ArrayList<String>();
     
-    int bookingid;
-    double cost;
-    String bookdate;
-    String confirmdate;
-    String paiddate;
-    int rating;
-    String feedback;
-    String email;
-    int groupid;
-    int diningoffid;
+    public int bookingid;
+    public double cost;
+    public String bookdate;
+    public String confirmdate;
+    public String paiddate;
+    public int rating;
+    public String feedback;
+    public String email;
+    public int groupid;
+    public int diningoffid;
     
-    int status;
-    int nextBooking;
+    public int status;
+    public int nextBooking;
     
     public void getNextBooking() {
         try {

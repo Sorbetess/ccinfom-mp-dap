@@ -45,7 +45,7 @@
     
     <%
        
-        double cost = Double.parseDouble(request.getParameter("cost"))
+        double cost = Double.parseDouble(request.getParameter("cost"));
         String bookdate = request.getParameter("bookdate");
         String confirmdate = request.getParameter("confirmdate");
         String paiddate = request.getParameter("paiddate");
@@ -56,7 +56,7 @@
         int diningoffid = Integer.parseInt(request.getParameter("offeringselector"));
         
         Booking b = new Booking();
-        b.bookingid = b.getNextBooking();
+        b.getNextBooking();
         b.cost = cost;
         b.bookdate = bookdate;
         b.confirmdate = confirmdate;
@@ -69,11 +69,12 @@
         b.book();
         
         String redirectURL;
-        if (emp.status==1)
-                redirectURL = "";
-            else
-                redirectURL = "";
+        if (b.status==1)
+                redirectURL = "gl_create_success.html";
+        else
+                redirectURL = "gl_create_fail.html";
         response.sendRedirect(redurectURL);
+        
 
     %>
 	

@@ -1,3 +1,4 @@
+<%@page import="DiningAccommodation.DiningOfferings"%>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -5,7 +6,8 @@
 	<meta charset="UTF-8">
 	<meta name="description" content="Pulse Restaurant HTML Template">
 	<meta name="keywords" content="pulse, restaurant, creative, html">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <base href="..">
 	<!-- Favicon -->   
 	<link href="img/favicon.ico" rel="shortcut icon"/>
 
@@ -25,6 +27,11 @@
 
 </head>
 <body>
+        <%
+            DiningOfferings off = new DiningOfferings();
+            off.getOfferings();
+            
+        %>
 	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
@@ -40,18 +47,10 @@
 	<!-- Hero section -->
 	<section class="hero-section">
 		<div class="hero-slider owl-carousel">
-			<div class="hs-item set-bg" data-setbg="img/slider/slider-1.jpg">
-				<div class="hs-content">
-					<div class="hsc-warp">
-						<h2>Boodle Fight<span>.</span></h2>
-						<p id="dining">Dining Accommodation</p>
-					</div>
-				</div>
-			</div>
 			<div class="hs-item set-bg" data-setbg="img/slider/slider-2.jpg">
 				<div class="hs-content">
 					<div class="hsc-warp">
-						<h2>Be a part of our community<span>.</span></h2>
+						<h2>Search and display offerings<span>.</span></h2>
 					</div>
 				</div>
 			</div>
@@ -66,44 +65,24 @@
 		<div class="container">
 			<div class="section-title">
 				<i class="flaticon-019-rib"></i>
-				<h2>Welcome</h2>
+				<h2>Display booking details</h2>
 			</div>
-			<div class="row">
-				<div class="col-md-4 intro-item">
-					<h3>Group Leader</h3>
-					<a class="btn btn-secondary site-btn my-btn" href="d_groupleader_create.html" role="button">Create Bookings</a>
-					<a class="btn btn-secondary site-btn my-btn" href="" role="button">Update Bookings</a>
-					<a class="btn btn-secondary site-btn my-btn" href="" role="button">Search Bookings</a>
-					<a class="btn btn-secondary site-btn my-btn" href="" role="button">Use this function</a>
-				</div>
-				<div class="col-md-4 intro-item">
-					<h3>Member 1</h3>
-					<a class="btn btn-secondary site-btn my-btn" href="" role="button">Create Bookings</a>
-					<a class="btn btn-secondary site-btn my-btn" href="" role="button">Update Bookings</a>
-					<a class="btn btn-secondary site-btn my-btn" href="" role="button">Search Bookings</a>
-					<a class="btn btn-secondary site-btn my-btn" href="" role="button">Use this function</a>
-					<a class="btn btn-secondary site-btn my-btn" href="" role="button">Use this function</a>
-					
-				</div>
-				<div class="col-md-4 intro-item">
-					<h3>Member 2</h3>
-					<a class="btn btn-secondary site-btn my-btn" href="" role="button">Create Bookings</a>
-					<a class="btn btn-secondary site-btn my-btn" href="" role="button">Update Bookings</a>
-					<a class="btn btn-secondary site-btn my-btn" href="" role="button">Search Bookings</a>
-					<a class="btn btn-secondary site-btn my-btn" href="" role="button">Use this function</a>
-					<a class="btn btn-secondary site-btn my-btn" href="" role="button">Use this function</a>
-				</div>
-			</div>
-
+                    <form name="searchoffering" action="m2/m2_searchdisplay.jsp" method="POST" class="col-12">
+                        <label for="offeringid">Input the offering ID</label>
+                        <select name="offeringid" class="form-control">
+                                 <%     int index;
+                                        int size = off.offers.size();
+                                        for (index=0; index < size; index++) { %>
+                                        <option class="col-md-12 border rounded" value="<%=off.offers.get(index) %>"> <%=off.offers.get(index) %> </option> 
+                                 <%     } 
+                                 %>               
+                        </select> 
+                        <input type="submit" class="btn btn-secondary site-btn my-btn" name="search" value="Search Offer">
+                    </form>
 		</div>
 	</section>
+        
 	<!-- Intro section end -->
-
-
-
-	
-
-
 
 	<!--====== Javascripts & Jquery ======-->
 	<script src="js/jquery-3.2.1.min.js"></script>

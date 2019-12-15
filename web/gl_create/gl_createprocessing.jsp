@@ -66,7 +66,7 @@
 	</section>
     <!-- Page info section end -->
     
-    <!-- Featured sectoon -->
+    <!-- Featured section -->
 	<section class="featured-section set-bg" data-setbg="img/featured-bg.jpg">
 		<div class="container">
 			<div class="row">
@@ -156,7 +156,7 @@
 			</div>
 		</div>
 	</section>
-	<!-- Featured sectoon end -->
+	<!-- Featured section end -->
 
 
 	<!--====== Javascripts & Jquery ======-->

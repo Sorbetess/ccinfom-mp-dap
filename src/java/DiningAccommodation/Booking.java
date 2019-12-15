@@ -321,7 +321,7 @@ public class Booking {
     }
     
     
-                                            public static void main(String args[]) {
+  public static void main(String args[]) {
         Booking book = new Booking();
 //        book.getOfferings();
 //        

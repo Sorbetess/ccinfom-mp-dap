@@ -209,7 +209,6 @@ public class Booking {
             report.clear();
             while (rs.next()) {
                 report.add(new Country(rs.getString("country"), rs.getInt("Population")));
-//                test.add(rs.getString("country"));
                 System.out.println(report.get(report.size()-1).name + " " + report.get(report.size()-1).population);
             }
             // 5. Disconnect

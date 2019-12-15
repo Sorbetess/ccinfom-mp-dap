@@ -190,7 +190,13 @@ ol {
 .my-btn {
 	margin-top: 5%;
 }
+.white {
+	color: white;
+}
 
+#tablecen {
+	text-align: center;
+}
 #searcherror {
 	text-align: center;
 }

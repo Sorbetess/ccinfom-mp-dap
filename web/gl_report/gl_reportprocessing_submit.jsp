@@ -99,41 +99,46 @@
 						<div class="contact-form-warp">
 							<div class="section-title">
 								<i class="flaticon-026-chicken-1"></i>   
+								<% 
+										int year = 0;
+										int month = 0;
+										Booking b = new Booking();
+									try {
+										month = Integer.parseInt(request.getParameter("month"));
+										year = Integer.parseInt(request.getParameter("year"));  
+										b.reportMonth = month;
+										b.reportYear = year;
+										b.globalReport(); 
+									}catch(Exception e) {
+										response.sendRedirect("http://localhost:8084/Dining_Accommodation/gl_create/gl_create_fail.html");
+									}
+									%><h2> <%=year%> - <%=month%> Results</h2><% 
+									if(b.status == 1) { %>
 
-                                <% 	try {
-									
-                                    int month = Integer.parseInt(request.getParameter("month"));
-                                    int year = Integer.parseInt(request.getParameter("year"));  
-                                    Booking b = new Booking();
-                                    b.reportMonth = month;
-                                    b.reportYear = year;
-                                    b.globalReport(); %>
-                                    <h2> <%=year%> - <%=month%> Results</h2> 
-                                
-                                    <table class="table .table-striped" id="booktable">
-                                        <thead>
-                                          <tr>
-                                            <th scope="col">Country</th>
-                                            <th scope="col">Population</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                            <%for(int i = 0; i < b.report.size() ;i++) { %>
-                                                <tr>
-                                                    <td><%=b.report.get(i).name%></td>
-                                                    <td><%=b.report.get(i).population%></td>
-                                                </tr>
-                                            <%}%>
-                                        </tbody>
-                                      </table>
-                                <%}
-                                catch(Exception e) {
-                                    %><h2>An error has occured</h2><%
-                                }
-                                finally {
-                                    
-                                }
-                                %>
+										<table class="table table-striped table-hover" id="booktable">
+											<thead>
+											  <tr>
+												<th scope="col">Country</th>
+												<th scope="col">Population</th>
+											  </tr>
+											</thead>
+											<tbody>
+												<%for(int i = 0; i < b.report.size() ;i++) { %>
+													<tr>
+														<td><%=b.report.get(i).name%></td>
+														<td><%=b.report.get(i).population%></td>
+													</tr>
+												<%}%>
+											</tbody>
+										  </table>
+										<% if(b.report.size() < 1) { %>
+											<h2>No matching results found.</h2>
+										<%}
+										}
+									else {
+										response.sendRedirect("http://localhost:8084/Dining_Accommodation/gl_create/gl_create_fail.html");
+									}%>
+								
                                 <br>
                                 <a class="btn btn-secondary site-btn my-btn" href="http://localhost:8084/Dining_Accommodation/" role="button">Return to home</a>
 							</div>

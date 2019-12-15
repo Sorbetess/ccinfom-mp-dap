@@ -165,11 +165,16 @@ public class Booking {
                 email = rs.getString("email");
                 groupid = rs.getInt("groupid");
                 diningoffid = rs.getInt("diningofferid");
+                status = 1;
             }
+            else {
+                status = -1; // Indicate that a booking is not found
+            }
+            
             // 5. Disconnect
             stmt.close();
             conn.close();
-            status = 1;
+            
         } catch (Exception e) {
             status = 0;
             System.out.println("something went wrong: " + e.getMessage());

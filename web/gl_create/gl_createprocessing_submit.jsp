@@ -11,9 +11,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<base href="..">
 
-	<link href="img/favicon.ico" rel="shortcut icon"/>
-
-	
 	<link rel="stylesheet" href="css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="css/font-awesome.min.css"/>
 	<link rel="stylesheet" href="css/flaticon.css"/>
@@ -21,61 +18,63 @@
 	<link rel="stylesheet" href="css/style.css"/>
 	<link rel="stylesheet" href="css/animate.css"/>
 
-
-
-
 </head>
 <body>
-
 
 	<div id="preloder">
 		<div class="loader"></div>
     </div>
-    <h1>Processing your request.</h1>
+    <h1>Processing booking request</h1>
     
     <%
-       
-        double cost = Double.parseDouble(request.getParameter("cost"));
-        String bookdate = request.getParameter("bookdate");
-        String confirmdate = request.getParameter("confirmdate");
-        String paiddate = request.getParameter("paiddate");
-        int rating = Integer.parseInt(request.getParameter("rating"));
-        String feedback = request.getParameter("feedback");
-        String email = request.getParameter("userselector");
-        int groupid = Integer.parseInt(request.getParameter("groupselector"));
-        int diningoffid = Integer.parseInt(request.getParameter("offeringselector"));
+        String redirectURL = "http://localhost:8084/Dining_Accommodation/gl_create/gl_create_fail.html";
+        try{
+            double cost = Double.parseDouble(request.getParameter("cost"));
+            String bookdate = request.getParameter("bookdate");
+            String confirmdate = request.getParameter("confirmdate");
+            String paiddate = request.getParameter("paiddate");
+            int rating = Integer.parseInt(request.getParameter("rating"));
+            String feedback = request.getParameter("feedback");
+            String email = request.getParameter("userselector");
+            int groupid = Integer.parseInt(request.getParameter("groupselector"));
+            int diningoffid = Integer.parseInt(request.getParameter("offeringselector"));
+            
+            Booking b = new Booking();
+            b.cost = cost;
+            b.bookdate = bookdate;
+            b.confirmdate = confirmdate;
+            b.paiddate = paiddate;
+            b.rating = rating;
+            b.feedback = feedback;
+            b.groupid = groupid;
+            b.email = email;
+            b.diningoffid = diningoffid;
+            
+            b.book();
+
+            if (b.status==1)
+                    redirectURL = "http://localhost:8084/Dining_Accommodation/gl_create/gl_create_success.html";
+
+        }
+        catch(Exception e) {
+            redirectURL = "http://localhost:8084/Dining_Accommodation/gl_create/gl_create_fail.html";
+        }
+        finally {
+            response.sendRedirect(redirectURL);
+        }
         
-        Booking b = new Booking();
-        b.cost = cost;
-        b.bookdate = bookdate;
-        b.confirmdate = confirmdate;
-        b.paiddate = paiddate;
-        b.rating = rating;
-        b.feedback = feedback;
-        b.groupid = groupid;
-        b.email = email;
-        b.diningoffid = diningoffid;
         
-        b.book();
         
-        String redirectURL;
-        if (b.status==1)
-                redirectURL = "http://localhost:8084/Dining_Accommodation/gl_create/gl_create_success.html";
-        else
-                redirectURL = "http://localhost:8084/Dining_Accommodation/gl_create/gl_create_fail.html";
-        response.sendRedirect(redirectURL);
+        
  
     %>
 	
-
-
-
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/circle-progress.min.js"></script>
 	<script src="js/main.js"></script>
 
-	
+
     </body>
 </html>

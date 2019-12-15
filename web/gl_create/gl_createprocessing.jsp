@@ -16,10 +16,9 @@
 	<meta name="keywords" content="pulse, restaurant, creative, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<base href="..">
-	<!-- Favicon -->   
-	<link href="img/favicon.ico" rel="shortcut icon"/>
+	
 
-	<!-- Stylesheets -->
+
 	<link rel="stylesheet" href="css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="css/font-awesome.min.css"/>
 	<link rel="stylesheet" href="css/flaticon.css"/>
@@ -27,11 +26,6 @@
 	<link rel="stylesheet" href="css/style.css"/>
 	<link rel="stylesheet" href="css/animate.css"/>
 
-
-	<!--[if lt IE 9]>
-	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
 
 </head>
 <body>
@@ -44,19 +38,11 @@
    
 	%>
         
-	<!-- Page Preloder -->
+
 	<div id="preloder">
 		<div class="loader"></div>
 	</div>
-	
-	<!-- Header section -->
-	<header class="header-section">
-	
-	</header>
-	<!-- Header section end -->
 
-
-	<!-- Page info section -->
 	<section class="page-top-info set-bg" data-setbg="img/page-top-bg/2.jpg">
 		<div class="ptf-center">
 			<div class="container">
@@ -64,9 +50,9 @@
 			</div>
 		</div>
 	</section>
-    <!-- Page info section end -->
+  
     
-    <!-- Featured sectoon -->
+ 
 	<section class="featured-section set-bg" data-setbg="img/featured-bg.jpg">
 		<div class="container">
 			<div class="row">
@@ -155,10 +141,7 @@
 			</div>
 		</div>
 	</section>
-	<!-- Featured sectoon end -->
-
-
-	<!--====== Javascripts & Jquery ======-->
+	
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/owl.carousel.min.js"></script>
@@ -166,9 +149,9 @@
 	<script src="js/main.js"></script>
 
 
-	<!-- load for map -->
+
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0YyDTa0qqOjIerob2VTIwo_XVMhrruxo"></script>
 	<script src="js/map.js"></script>
-	
+
     </body>
 </html>

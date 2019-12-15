@@ -64,7 +64,7 @@
         b.search();
 
         if(b.status == 1) {
-        %><table class="table table-striped table-responsive col-12" id="booktable" id="tablecen">
+    %>      <table class="table .table-striped" id="booktable">
         <thead>
           <tr>
             <th scope="col">Booking ID</th>

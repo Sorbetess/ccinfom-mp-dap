@@ -189,8 +189,7 @@ public class Booking {
             // 4. Process the results
             offers.clear();
             while (rs.next()) {
-                report.add(new Country(rs.getString("country"), rs.getInt("Population")));
-                System.out.println(report.get(report.size()-1).name + " " + report.get(report.size()-1).population);
+                populationReport.add(new Country(rs.getString("country"), rs.getInt("Population")));
             }
             // 5. Disconnect
             stmt.close();

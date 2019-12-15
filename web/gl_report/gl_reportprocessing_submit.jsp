@@ -101,7 +101,7 @@
 								<i class="flaticon-026-chicken-1"></i>   
 
                                 <% 	try {
-									
+	
                                     int month = Integer.parseInt(request.getParameter("month"));
                                     int year = Integer.parseInt(request.getParameter("year"));  
                                     Booking b = new Booking();

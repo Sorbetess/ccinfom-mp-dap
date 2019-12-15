@@ -31,7 +31,7 @@ public class Transactions {
             // 1. Connect to the database
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=root&password=p@ssword");
+            conn = DriverManager.getConnection(DBServer.SERVER);
             // 2. Prepare the SQL Statement
             PreparedStatement stmt ;
 
@@ -69,7 +69,7 @@ public class Transactions {
             // 1. Connect to the database
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=root&password=p@ssword");
+            conn = DriverManager.getConnection(DBServer.SERVER);
             // 2. Prepare the SQL Statement
             PreparedStatement stmt ;
 
@@ -108,7 +108,7 @@ public class Transactions {
             // 1. Connect to the database
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=root&password=p@ssword");
+            conn = DriverManager.getConnection(DBServer.SERVER);
             // 2. Prepare the SQL Statement
             PreparedStatement stmt = conn.prepareStatement("SELECT bookingid AS bookid FROM diningaccommodations.bookings ORDER BY bookid;");
             ResultSet rs = stmt.executeQuery();
@@ -131,7 +131,7 @@ public class Transactions {
             // 1. Connect to the database
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=root&password=p@ssword");
+            conn = DriverManager.getConnection(DBServer.SERVER);
             // 2. Prepare the SQL Statement
             PreparedStatement stmt = conn.prepareStatement("SELECT ccnumber AS ccno FROM diningaccommodations.credit_cards;");
             ResultSet rs = stmt.executeQuery();
@@ -154,7 +154,7 @@ public class Transactions {
             // 1. Connect to the database
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=root&password=p@ssword");
+            conn = DriverManager.getConnection(DBServer.SERVER);
             // 2. Prepare the SQL Statement
             PreparedStatement stmt = conn.prepareStatement("SELECT transno FROM diningaccommodations.transactions;");
             ResultSet rs = stmt.executeQuery();
@@ -177,7 +177,7 @@ public class Transactions {
             // 1. Connect to the database
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=p@ssword");
+            conn = DriverManager.getConnection(DBServer.SERVER);
             // 2. Prepare the SQL Statement
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM transactions WHERE transno=?");
             stmt.setInt(1, transno);
@@ -214,7 +214,7 @@ public class Transactions {
             // 1. Connect to the database
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=p@ssword");
+            conn = DriverManager.getConnection(DBServer.SERVER);
             // 2. Prepare the SQL Statement
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM transactions WHERE transno=?");
             stmt.setInt(1, transno);

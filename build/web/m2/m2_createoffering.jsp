@@ -70,7 +70,7 @@
 
                                 <br>
                                 <label for="maxclient">Select the maximum client for this offering</label>
-                                <input type="number" min="1" max="100" id="maxclient" value="1" name="maxclient">
+                                <input type="number" min="1" max="100" id="maxclient" class="form-control" value="1" name="maxclient">
 
                                 <br>
                                 <input type="submit" class="btn btn-secondary site-btn my-btn" value="Create Offering">    

@@ -33,7 +33,7 @@ public class Menu {
             // 1. Connect to the database
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=root&password=p@ssword");
+            conn = DriverManager.getConnection(DBServer.SERVER);
             // 2. Prepare the SQL Statement
             PreparedStatement stmt = conn.prepareStatement("SELECT m.menuid mid, m.menutype mt, COUNT(*) total FROM BOOKINGS b JOIN DININGOFFERINGS dio ON b.diningofferid = dio.offeringid JOIN MENUS m ON dio.offeringid = m.diningofferid WHERE YEAR(b.bookdate) = ? AND MONTH(b.bookdate) = ? GROUP BY m.menuid, m.menutype ORDER BY COUNT(*) DESC, m.menuid, m.menutype LIMIT 10");
             stmt.setInt(1, year);

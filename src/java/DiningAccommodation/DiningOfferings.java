@@ -29,7 +29,7 @@ public class DiningOfferings {
             // 1. Connect to the database
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=12345");
+            conn = DriverManager.getConnection(DBServer.SERVER);
             // 2. Prepare the SQL Statement
             PreparedStatement stmt ;
             
@@ -59,7 +59,7 @@ public class DiningOfferings {
             // 1. Connect to the database
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=12345");
+            conn = DriverManager.getConnection(DBServer.SERVER);
             // 2. Prepare the SQL Statement
             PreparedStatement stmt ;
             
@@ -87,7 +87,7 @@ public class DiningOfferings {
             // 1. Connect to the database
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=12345");
+            conn = DriverManager.getConnection(DBServer.SERVER);
             // 2. Prepare the SQL Statement
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM DININGOFFERINGS WHERE offeringid=?");
             stmt.setInt(1, offeringid);
@@ -116,7 +116,7 @@ public class DiningOfferings {
             // 1. Connect to the database
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=12345");
+            conn = DriverManager.getConnection(DBServer.SERVER);
             // 2. Prepare the SQL Statement
             // 3. Execute the SQL Statement
             PreparedStatement stmt = conn.prepareStatement("SET FOREIGN_KEY_CHECKS = OFF");
@@ -155,7 +155,7 @@ public class DiningOfferings {
             // 1. Connect to the database
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=12345");
+            conn = DriverManager.getConnection(DBServer.SERVER);
             // 2. Prepare the SQL Statement
             PreparedStatement stmt = conn.prepareStatement("SELECT MAX(offeringid) as maxoffer FROM diningaccommodations.diningofferings");
             // 3. Execute the SQL Statement
@@ -177,7 +177,7 @@ public class DiningOfferings {
             // 1. Connect to the database
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=12345");
+            conn = DriverManager.getConnection(DBServer.SERVER);
             // 2. Prepare the SQL Statement
             PreparedStatement stmt = conn.prepareStatement("SELECT offeringid FROM diningofferings ORDER BY offeringid");
             // 3. Execute the SQL Statement

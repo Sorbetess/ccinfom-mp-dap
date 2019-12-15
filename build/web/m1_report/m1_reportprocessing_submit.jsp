@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<title>Report 3</title>
+	<title>Report 4</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="Pulse Restaurant HTML Template">
 	<meta name="keywords" content="pulse, restaurant, creative, html">
@@ -33,7 +33,7 @@
     <section class="page-top-info set-bg" data-setbg="img/page-top-bg/4.jpg" id="reporttitle">
 		<div class="ptf-center">
 			<div class="container">
-				<h2 >Customer global distribution<span>.</span></h2>
+				<h2 >Top Menus<span>.</span></h2>
 				
 			</div>
 		</div>

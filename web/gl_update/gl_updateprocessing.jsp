@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<title>Pulse - Restaurant HTML Template</title>
+	<title>Update Bookings</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="Pulse Restaurant HTML Template">
 	<meta name="keywords" content="pulse, restaurant, creative, html">
@@ -79,7 +79,7 @@
 						<form name="updatebooking" action="gl_update/gl_updateprocessing_submit.jsp" method="POST">
 							<br>
                             <label for="bookingsselector">Booking ID</label>
-                            <select name="bookingsselector">
+                            <select name="bookingsselector" class="form-control">
 									<%                            
 									for(int i = 0; i < book.bookings.size(); i++) { %>
 										<option value="<%=book.bookings.get(i)%>"> <%=book.bookings.get(i)%> </option>
@@ -116,7 +116,7 @@
 
                             <br>
                             <label for="rating">Rating</label>
-							<select name="rating">
+							<select name="rating" class="form-control">
 								<option value=1>1</option>
 								<option value=2>2</option>
 								<option value=3>3</option>
@@ -135,7 +135,7 @@
 
 							<br>
                             <label for="userselector">Booker email</label>
-							<select name="userselector">
+							<select name="userselector" class="form-control">
 								<%                            
 								int usersize = book.emails.size();
 								for(int i = 0; i < usersize; i++) { %>
@@ -146,7 +146,7 @@
 							
 							<br>
                             <label for="groupselector">Group ID</label>
-							<select name="groupselector">
+							<select name="groupselector" class="form-control">
 								<option value=0>Not a group booking</option>
 								<%                            
 								int groupsize = book.groups.size();
@@ -158,7 +158,7 @@
                             
                             <br>
                             <label for="offeringselector">Dining offering</label>
-                            <select name="offeringselector">
+                            <select name="offeringselector" class="form-control">
 									<%                            
 						
 									int size = book.offers.size();

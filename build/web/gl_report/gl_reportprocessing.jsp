@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<title>Pulse - Restaurant HTML Template</title>
+	<title>Input Year</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="Pulse Restaurant HTML Template">
 	<meta name="keywords" content="pulse, restaurant, creative, html">
@@ -80,7 +80,6 @@
                 </div>
                  <input type="submit" class="btn btn-secondary site-btn my-btn" name="dist" value="Proceed">
             </form>
-            <input type="submit" class="btn btn-secondary site-btn my-btn" name="book" value="Create Booking">
 		</div>
 	</section>
 	<!-- Intro section end -->

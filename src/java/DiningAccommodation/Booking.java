@@ -93,7 +93,7 @@ public class Booking {
             // 1. Connect to the database
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=root&password=p@ssword");
+            conn = DriverManager.getConnection(DBServer.SERVER);
             // 2. Prepare the SQL Statement
             getNextBooking();  
             PreparedStatement stmt = conn.prepareStatement("UPDATE bookings SET cost = ?, bookdate = ?, confirmdate = ?, savedate = ?, canceldate = ?, refunddate = ?, paiddate = ?, rating = ?, feedback = ?, email = ?, groupid = ?, diningofferid = ? WHERE bookingid = ?") ;
@@ -138,7 +138,7 @@ public class Booking {
             // 1. Connect to the database
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=p@ssword");
+            conn = DriverManager.getConnection(DBServer.SERVER);
             // 2. Prepare the SQL Statement
             PreparedStatement stmt = conn.prepareStatement("SELECT cost AS cost, bookdate AS bookdate, confirmdate AS confirmdate, savedate AS savedate, canceldate AS canceldate, refunddate AS refunddate, paiddate AS paiddate, rating AS rating, feedback AS feedback, email AS email, groupid AS groupid, diningofferid as diningofferid FROM bookings WHERE bookingid=?");
             stmt.setInt(1, bookingid);
@@ -177,7 +177,7 @@ public class Booking {
             // 1. Connect to the database
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=p@ssword");
+            conn = DriverManager.getConnection(DBServer.SERVER);
             // 2. Prepare the SQL Statement
             PreparedStatement stmt = conn.prepareStatement
                                      ("  SELECT addresscountry AS country, COUNT(addresscountry) AS Population\n" +
@@ -215,7 +215,7 @@ public class Booking {
             // 1. Connect to the database
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=p@ssword");
+            conn = DriverManager.getConnection(DBServer.SERVER);
             // 2. Prepare the SQL Statement
             PreparedStatement stmt = conn.prepareStatement("SELECT offeringid AS offeringid FROM diningofferings ORDER BY offeringid");
             // 3. Execute the SQL Statement
@@ -239,7 +239,7 @@ public class Booking {
             // 1. Connect to the database
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=p@ssword");
+            conn = DriverManager.getConnection(DBServer.SERVER);
             // 2. Prepare the SQL Statement
             PreparedStatement stmt = conn.prepareStatement("SELECT groupid AS groupid FROM diningaccommodations.groups ORDER BY groupid");
             ResultSet rs = stmt.executeQuery();
@@ -261,7 +261,7 @@ public class Booking {
             // 1. Connect to the database
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=p@ssword");
+            conn = DriverManager.getConnection(DBServer.SERVER);
             // 2. Prepare the SQL Statement
             PreparedStatement stmt = conn.prepareStatement("SELECT bookingid AS bookid FROM diningaccommodations.bookings ORDER BY bookid;");
             ResultSet rs = stmt.executeQuery();
@@ -283,7 +283,7 @@ public class Booking {
             // 1. Connect to the database
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=p@ssword");
+            conn = DriverManager.getConnection(DBServer.SERVER);
             // 2. Prepare the SQL Statement
             PreparedStatement stmt = conn.prepareStatement("SELECT email AS email FROM CLIENT_USERS ORDER BY email");
             // 3. Execute the SQL Statement
@@ -308,7 +308,7 @@ public class Booking {
             // 1. Connect to the database
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=p@ssword");
+            conn = DriverManager.getConnection(DBServer.SERVER);
             // 2. Prepare the SQL Statement
             PreparedStatement stmt = conn.prepareStatement("SELECT MAX(bookingid) as maxbook FROM diningaccommodations.bookings");
             // 3. Execute the SQL Statement
@@ -331,7 +331,7 @@ public class Booking {
             // 1. Connect to the database
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=p@ssword");
+            conn = DriverManager.getConnection(DBServer.SERVER);
             // 2. Prepare the SQL Statement
             PreparedStatement stmt = conn.prepareStatement("SELECT DISTINCT YEAR(bookdate) AS bookyear FROM diningaccommodations.bookings ORDER BY bookyear ASC");
             // 3. Execute the SQL Statement
@@ -354,7 +354,7 @@ public class Booking {
             // 1. Connect to the database
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=p@ssword");
+            conn = DriverManager.getConnection(DBServer.SERVER);
             // 2. Prepare the SQL Statement
             PreparedStatement stmt = conn.prepareStatement("SELECT DISTINCT MONTH(bookdate) AS bookmonth FROM diningaccommodations.bookings WHERE YEAR(bookdate) = ? ORDER BY bookmonth");
             stmt.setInt(1, reportYear);

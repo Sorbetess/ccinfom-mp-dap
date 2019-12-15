@@ -57,12 +57,12 @@
         DiningOfferings off = new DiningOfferings();
         off.offeringid = Integer.parseInt(request.getParameter("offeringid"));
         try {
-            off.deleteOffering();
+            off.search();
         } catch (Exception e){
             e.printStackTrace();
             response.sendRedirect("/Dining_Accommodation/gl_create/gl_create_fail.html");
         }%>      
-        <table class="table.table-striped" id="booktable">
+        <table class="table table-striped table-responsive col-12" id="booktable">
         <thead>
           <tr>
             <th scope="col">Offering ID</th>
@@ -80,7 +80,7 @@
           </tr>
         </tbody>
       </table> 
-        <a class="btn btn-secondary site-btn my-btn" href="../index.html" role="button">Return to home</a>
+        <a class="btn btn-secondary site-btn my-btn" href="/Dining_Accommodation/index.html" role="button">Return to home</a>
         </div>
        
     </div>

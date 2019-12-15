@@ -1,11 +1,11 @@
 
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import = "DiningAccommodation.*, java.util.*" %>
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<title>Input Month</title>
+	<title>Report 3</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="Pulse Restaurant HTML Template">
 	<meta name="keywords" content="pulse, restaurant, creative, html">

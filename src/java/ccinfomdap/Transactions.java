@@ -59,9 +59,43 @@ public class Transactions {
         return ccnumber;
     }
     
+    public static ArrayList<Integer> getAllBookingIDs() {
+        ArrayList<Integer> bookingidlist = null;
+        try {
+            // 1. Connect to the database
+            Connection conn;
+
+            String server = "localhost:3307";
+            String username = "root";
+            String password = "p@ssword";
+
+            String schema = "diningaccommodations";
+            String table = "bookings";
+
+            conn = DriverManager.getConnection("jdbc:mysql://" + server + "/" + schema +"?useTimezone=true&serverTimezone=UTC&user="+ username +"&password=" + password);
+            // 2. Prepare the SQL Statement
+            PreparedStatement stmt = conn.prepareStatement("SELECT bookingid FROM " + schema + "." + table + "");
+            // 3. Execute the SQL Statement
+            ResultSet rs = stmt.executeQuery();
+            // 4. Process the results
+
+            bookingidlist = new ArrayList<>();
+            while (rs.next()) {
+                bookingidlist.add(rs.getInt("bookingid"));
+            }
+            // 5. Disconnect
+            stmt.close();
+            conn.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }     
+        
+        return bookingidlist;
+    }
+    
     public static ArrayList<Transactions> getList() {
         try {
-            // ArrayList<Transactions> list = new ArrayList<>();
             ArrayList<String> tmlist = new ArrayList<>();
             
             // 1. Connect to the database
@@ -76,13 +110,14 @@ public class Transactions {
             
             conn = DriverManager.getConnection("jdbc:mysql://" + server + "/" + schema +"?useTimezone=true&serverTimezone=UTC&user="+ username +"&password=" + password);
             // 2. Prepare the SQL Statement
-            PreparedStatement stmt = conn.prepareStatement("SELECT transtype FROM " + schema + "." + table + "");
+            PreparedStatement stmt = conn.prepareStatement("SELECT transid FROM " + schema + "." + table + "");
             // 3. Execute the SQL Statement
             ResultSet rs = stmt.executeQuery();
             // 4. Process the results
             
+            
             while (rs.next()) {
-                tmlist.add(rs.getString("transtype"));
+                tmlist.add(rs.getString("transid"));
             }
             // 5. Disconnect
             stmt.close();

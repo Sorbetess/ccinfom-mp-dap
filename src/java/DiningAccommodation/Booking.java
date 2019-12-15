@@ -11,15 +11,6 @@ import java.util.*;
  * @author Bryce Ramirez
  */
 public class Booking {
-    public class Country {
-        public String name;
-        public int population;
-        
-        public Country(String name, int population) {
-            this.name= name;
-            this.population = population;
-        }
-    }
     public ArrayList <String> offers = new ArrayList<String>();
     public ArrayList <String> groups = new ArrayList<String>();
     public ArrayList <String> emails = new ArrayList<String>();
@@ -51,7 +42,7 @@ public class Booking {
     public int reportYear;
     
 
-    
+    ArrayList<Country> populationReport = new ArrayList<>(); 
       
    
     
@@ -78,7 +69,7 @@ public class Booking {
                 stmt.setInt(9, groupid);
             else 
                 stmt.setNull(9, Types.INTEGER);
-
+            stmt.setInt(9, groupid);
             stmt.setInt(10, diningoffid);
             
             
@@ -102,7 +93,7 @@ public class Booking {
             // 1. Connect to the database
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=p@ssword");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=root&password=p@ssword");
             // 2. Prepare the SQL Statement
             getNextBooking();  
             PreparedStatement stmt = conn.prepareStatement("UPDATE bookings SET cost = ?, bookdate = ?, confirmdate = ?, savedate = ?, canceldate = ?, refunddate = ?, paiddate = ?, rating = ?, feedback = ?, email = ?, groupid = ?, diningofferid = ? WHERE bookingid = ?") ;
@@ -154,6 +145,7 @@ public class Booking {
             // 3. Execute the SQL Statement
             ResultSet rs = stmt.executeQuery();
             // 4. Process the results
+            offers.clear();
             if(rs.next()) {
                 cost = rs.getDouble("cost");
                 bookdate = rs.getString("bookdate");
@@ -167,23 +159,18 @@ public class Booking {
                 email = rs.getString("email");
                 groupid = rs.getInt("groupid");
                 diningoffid = rs.getInt("diningofferid");
-                status = 1;
             }
-            else {
-                status = -1; // Indicate that a booking is not found
-            }
-            
             // 5. Disconnect
             stmt.close();
             conn.close();
-            
+            status = 1;
         } catch (Exception e) {
             status = 0;
             System.out.println("something went wrong: " + e.getMessage());
         }
     }
     
-    public void globalReport() {
+    public void globalReport(int month, int year) {
   
         
         try {
@@ -196,30 +183,28 @@ public class Booking {
                                      ("  SELECT addresscountry AS country, COUNT(addresscountry) AS Population\n" +
                                         "FROM client_users cu\n" +
                                         "WHERE cu.email IN (\n" +
-                                        "	SELECT B.email\n" +
+                                        "	SELECT email\n" +
                                         "    FROM BOOKINGS B\n" +
                                         "    WHERE YEAR(B.bookdate) = ? AND MONTH(B.bookdate) = ?\n" +
                                         ")\n" +
                                         "GROUP BY addresscountry\n" +
                                         "ORDER BY Population DESC;");
-        
-            stmt.setInt(1, reportYear);
-            stmt.setInt(2, reportMonth);
+            stmt.setInt(1, year);
+            stmt.setInt(2, month);
             // 3. Execute the SQL Statement
             ResultSet rs = stmt.executeQuery();
             // 4. Process the results
-            report.clear();
+            offers.clear();
             while (rs.next()) {
-                report.add(new Country(rs.getString("country"), rs.getInt("Population")));
-                System.out.println(report.get(report.size()-1).name + " " + report.get(report.size()-1).population);
+                populationReport.add(new Country(rs.getString("country"), rs.getInt("Population")));
             }
             // 5. Disconnect
             stmt.close();
             conn.close();
             status = 1;
         } catch (Exception e) {
-            status = 0;
             System.out.println("something went wrong" + e.getMessage());
+            status = 0;
         }     
         
     }

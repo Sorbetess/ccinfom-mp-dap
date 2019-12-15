@@ -41,17 +41,23 @@
 	<div id="preloder">
 		<div class="loader"></div>
     </div>
-    <h1>Processing your request.</h1>
-    
-    <%
-       
-         
-        int month = Integer.parseInt(request.getParameter("month"));
-        int year = Integer.parseInt(request.getParameter("year"));
-    
+
+    <!-- Page info section -->
+	<section class="page-top-info set-bg" data-setbg="img/page-top-bg/2.jpg" id="booky">
+		<div class="ptf-center">
+			<div class="container">
+				<h2>Booking details<span>.</span></h2>
+			</div>
+		</div>
+    </section>
+    <div class="container">
+        <% 
+        
+        String month = Integer.parseInt(request.getParamater("month"));
+        String year = Integer.parseInt(request.getParamater("year"));
+        
         Booking b = new Booking();
         b.globalReport(month, year);
-        
         if(b.status==1){%>
             <table class="table .table-striped" id="booktable">
                 <thead>
@@ -78,9 +84,18 @@
         } %>
         <a class="btn btn-secondary site-btn my-btn" href="http://localhost:8084/Dining_Accommodation/" role="button">Return to home</a>
     </div>
+   
+   
         
 
-  
+
+
+
+   
+    
+    
+
+   
 	
 
 

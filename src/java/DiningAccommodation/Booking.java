@@ -35,7 +35,7 @@ public class Booking {
     public int status;
     public int nextBooking;
 
-    ArrayList<Country> populationReport = new ArrayList<>(); 
+    public ArrayList<Country> populationReport = new ArrayList<>(); 
       
    
     

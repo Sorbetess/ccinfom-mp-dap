@@ -14,62 +14,47 @@ import java.util.ArrayList;
  */
 public class Transactions {
     private int transno;
-    private java.sql.Date transdate;
+    private Date transdate;
     private double transamount;
     private String transtype;
     private String transmethod;
     private int bookingid;
+    private long ccnumber;
 
-    public Transactions (int transno, java.sql.Date transdate, ) {
+    public Transactions (int transno, Date transdate, double transamount, String transtype, String transmethod, int bookingid, long ccnumber) {
+        this.transno = transno;
         this.transdate = transdate;
-        
+        this.transamount = transamount;
+        this.transtype = transtype;
+        this.transmethod = transmethod;
+        this.bookingid = bookingid;
+        this.ccnumber = ccnumber;
     }
 
-    /**
-     * @return the transno
-     */
     public int getTransno() {
         return transno;
     }
 
-    /**
-     * @return the transdate
-     */
     public Date getTransdate() {
         return transdate;
     }
 
-    /**
-     * @return the transamount
-     */
     public double getTransamount() {
         return transamount;
     }
 
-    /**
-     * @return the transtype
-     */
     public String getTranstype() {
         return transtype;
     }
 
-    /**
-     * @return the transmethod
-     */
     public String getTransmethod() {
         return transmethod;
     }
 
-    /**
-     * @return the bookingid
-     */
     public int getBookingid() {
         return bookingid;
     }
 
-    /**
-     * @return the ccnumber
-     */
     public long getCcnumber() {
         return ccnumber;
     }
@@ -83,35 +68,34 @@ public class Transactions {
             Connection conn;
             
             String server = "localhost:3307";
-            String schema = "diningaccommodations";
             String username = "root";
             String password = "p@ssword";
             
+            String schema = "diningaccommodations";
+            String table = "transactions";
+            
             conn = DriverManager.getConnection("jdbc:mysql://" + server + "/" + schema +"?useTimezone=true&serverTimezone=UTC&user="+ username +"&password=" + password);
             // 2. Prepare the SQL Statement
-            PreparedStatement stmt = conn.prepareStatement("SELECT transtype FROM " + schema + ".transactions LIMIT 10");
+            PreparedStatement stmt = conn.prepareStatement("SELECT transtype FROM " + schema + "." + table + "");
             // 3. Execute the SQL Statement
             ResultSet rs = stmt.executeQuery();
             // 4. Process the results
-            tmlist.clear();
+            
             while (rs.next()) {
                 tmlist.add(rs.getString("transtype"));
             }
             // 5. Disconnect
             stmt.close();
             conn.close();
-            
-            for (String s: tmlist) {
-                System.out.println(s);
-            }
+
         } catch (Exception e) {
-            System.out.println("something went wrong - " + e.getMessage());
             e.printStackTrace();
         }     
         
         return null;
     }
     
+    // For testing
     public static void main (String args[]) {
         getList();
     }

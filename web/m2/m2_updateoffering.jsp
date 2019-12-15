@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
     <head>
-        <title>Pulse - Restaurant HTML Template</title>
+        <title>Update Offering</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="Pulse Restaurant HTML Template">
 	<meta name="keywords" content="pulse, restaurant, creative, html">

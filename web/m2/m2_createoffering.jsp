@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
     <head>
-        <title>Pulse - Restaurant HTML Template</title>
+        <title>Create Offering</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="Pulse Restaurant HTML Template">
 	<meta name="keywords" content="pulse, restaurant, creative, html">
@@ -23,7 +23,7 @@
 	<script src="js/circle-progress.min.js"></script>
 	<script src="js/main.js"></script>
         
-        <!--<link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.css"/>-->
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.css"/>
         <link rel="stylesheet" href="css/bootstrap.min.css"/>
         <link rel="stylesheet" href="css/font-awesome.min.css"/>
 	<link rel="stylesheet" href="css/flaticon.css"/>

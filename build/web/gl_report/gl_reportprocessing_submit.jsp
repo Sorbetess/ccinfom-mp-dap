@@ -50,46 +50,7 @@
 			</div>
 		</div>
     </section>
-    <div class="container">
-        <% 
-        Booking b = new Booking();
-        int month = request.getParamater(month);
-        int year = request.getParamater(year);
-        b.globalReport(month, year);
-        if(b.status==1){%>
-            <table class="table .table-striped" id="booktable">
-                <thead>
-                  <tr>
-                    <th scope="col">Country</th>
-                    <th scope="col">Population</th>
-        
-                    
-                  </tr>
-                </thead>
-                <tbody>
-                    <%for(int i = 0; i < b.populationReport.size() ;i++) { %>
-                        <tr>
-                            <td><%=b.populationReport.get(i).country%></td>
-                            <td><%=b.populationReport.get(i).population%></td>
-                        </tr>
-                    }
-                </tbody>
-              </table>
-       <% }
-        else {
-            response.sendRedirect("http://localhost:8084/Dining_Accommodation/gl_create/gl_create_fail.html");
 
-        } %>
-        <a class="btn btn-secondary site-btn my-btn" href="http://localhost:8084/Dining_Accommodation/" role="button">Return to home</a>
-    </div>
-   
-   
-        
-
-
-
-
-   
     
     <footer class="footer-section">
 	<div class="footer-bg-area set-bg" data-setbg="img/footer-bg.jpg">
@@ -101,13 +62,13 @@
 								<i class="flaticon-026-chicken-1"></i>   
 
                                 <% 	try {
-									
+	
                                     int month = Integer.parseInt(request.getParameter("month"));
                                     int year = Integer.parseInt(request.getParameter("year"));  
                                     Booking b = new Booking();
                                     b.reportMonth = month;
                                     b.reportYear = year;
-                                    b.globalReport(); %>
+                                    b.globalReport(month, year); %>
                                     <h2> <%=year%> - <%=month%> Results</h2> 
                                 
                                     <table class="table .table-striped" id="booktable">
@@ -135,7 +96,7 @@
                                 }
                                 %>
                                 <br>
-                                <a class="btn btn-secondary site-btn my-btn" href="http://localhost:8080/Dining_Accommodation/" role="button">Return to home</a>
+                                <a class="btn btn-secondary site-btn my-btn" href="/Dining_Accommodation/index.html" role="button">Return to home</a>
 							</div>
 							
 						</div>

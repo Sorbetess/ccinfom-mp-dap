@@ -103,10 +103,10 @@
       </table> <%
         }
         else {
-            response.sendRedirect("http://localhost:8084/Dining_Accommodation/gl_create/gl_create_fail.html");
+            response.sendRedirect("/Dining_Accommodation/gl_create/gl_create_fail.html");
         }
         %>
-        <a class="btn btn-secondary site-btn my-btn" href="http://localhost:8084/Dining_Accommodation/" role="button">Return to home</a>
+        <a class="btn btn-secondary site-btn my-btn" href="/Dining_Accommodation/index.html" role="button">Return to home</a>
         </div>
        
     </div>

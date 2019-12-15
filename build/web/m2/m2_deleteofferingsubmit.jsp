@@ -67,7 +67,7 @@
         </div>
         <div class="container">
              <div class = "col-md-12 intro-item">
-                <a class="btn btn-secondary site-btn my-btn" href="/" role="button">Return to home</a>
+                <a class="btn btn-secondary site-btn my-btn" href="/Dining_Accommodation/index.html" role="button">Return to home</a>
         </div>
     </div>
        

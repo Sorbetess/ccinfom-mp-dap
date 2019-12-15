@@ -1,8 +1,3 @@
-<%-- 
-    Document   : gl_createprocessing
-    Created on : Dec 14, 2019, 10:58:10 PM
-    Author     : Bryce Ramirez
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import = "DiningAccommodation.*, java.util.*" %>
@@ -167,9 +162,5 @@
 	<script src="js/main.js"></script>
 
 
-	<!-- load for map -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0YyDTa0qqOjIerob2VTIwo_XVMhrruxo"></script>
-	<script src="js/map.js"></script>
-	
     </body>
 </html>

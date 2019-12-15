@@ -80,9 +80,9 @@
         
         String redirectURL;
         if (b.status==1)
-                redirectURL = "http://localhost:8084/Dining_Accommodation/gl_create/gl_create_success.html";
+                redirectURL = "/Dining_Accommodation/gl_create/gl_create_success.html";
         else
-                redirectURL = "http://localhost:8084/Dining_Accommodation/gl_create/gl_create_fail.html";
+                redirectURL = "/Dining_Accommodation/gl_create/gl_create_fail.html";
         response.sendRedirect(redirectURL);
         
 

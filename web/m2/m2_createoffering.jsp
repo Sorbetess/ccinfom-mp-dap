@@ -1,9 +1,3 @@
-<%-- 
-    Document   : m2_createoffering
-    Created on : Dec 15, 2019, 10:56:01 AM
-    Author     : Carlos
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import = "DiningAccommodation.*, java.util.*" %>
 <!DOCTYPE html>
@@ -18,10 +12,6 @@
         
         <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/circle-progress.min.js"></script>
-	<script src="js/main.js"></script>
         
         <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.css"/>
         <link rel="stylesheet" href="css/bootstrap.min.css"/>
@@ -39,6 +29,8 @@
                 });
             });
         </script>
+       
+
         
     </head>
     
@@ -95,6 +87,7 @@
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/circle-progress.min.js"></script>
 	<script src="js/main.js"></script>
+        
         
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0YyDTa0qqOjIerob2VTIwo_XVMhrruxo"></script>
 	<script src="js/map.js"></script>

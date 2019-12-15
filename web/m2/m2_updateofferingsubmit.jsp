@@ -1,8 +1,3 @@
-<%-- 
-    Document   : m2_createofferingsubmit
-    Created on : Dec 15, 2019, 2:34:44 PM
-    Author     : Carlos
---%>
 
 <%@page import="java.text.*"%>
 <%@page import="java.util.Date"%>

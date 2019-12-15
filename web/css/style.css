@@ -196,10 +196,6 @@ ol {
 	color: #737373;
 }
 
-#booky {
-	margin-bottom: 10%;
-}
-
 .site-btn:hover {
 	color: #000000;
 }
@@ -543,9 +539,6 @@ ol {
 /*------------------
   Hero section
 ---------------------*/
-
-
-
 
 .hs-item {
 	height: 892px;
@@ -1480,5 +1473,3 @@ ol {
 		text-align: center;
 	}
 }
-
-

@@ -86,7 +86,7 @@ public class Booking {
             // 1. Connect to the database
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=p@ssword");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=root&password=p@ssword");
             // 2. Prepare the SQL Statement
             getNextBooking();  
             PreparedStatement stmt = conn.prepareStatement("UPDATE bookings SET cost = ?, bookdate = ?, confirmdate = ?, savedate = ?, canceldate = ?, refunddate = ?, paiddate = ?, rating = ?, feedback = ?, email = ?, groupid = ?, diningofferid = ? WHERE bookingid = ?") ;

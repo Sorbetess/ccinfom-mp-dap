@@ -27,7 +27,7 @@
     <h1>Processing transaction request...</h1>
     
     <%
-        String redirectURL = "http://localhost:8080/Dining_Accommodation/m1_create/m1_create_fail.html";
+        String redirectURL = "/Dining_Accommodation/m1_create/m1_create_fail.html";
         try{            
             Transactions t = new Transactions();
             t.transno = Integer.parseInt(request.getParameter("transno"));
@@ -41,11 +41,11 @@
             t.register();
 
             if (t.status==1)
-                    redirectURL = "http://localhost:8080/Dining_Accommodation/m1_create/m1_create_success.html";
+                    redirectURL = "/Dining_Accommodation/m1_create/m1_create_success.html";
 
         }
         catch(Exception e) {
-            redirectURL = "http://localhost:8080/Dining_Accommodation/m1_create/m1_create_fail.html";
+            redirectURL = "/Dining_Accommodation/m1_create/m1_create_fail.html";
         }
         finally {
             response.sendRedirect(redirectURL);

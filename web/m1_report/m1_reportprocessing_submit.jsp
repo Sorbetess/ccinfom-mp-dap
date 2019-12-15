@@ -87,7 +87,7 @@
                                 }
                                 %>
                                 <br>
-                                <a class="btn btn-secondary site-btn my-btn" href="http://localhost:8080/Dining_Accommodation/" role="button">Return to home</a>
+                                <a class="btn btn-secondary site-btn my-btn" href="/Dining_Accommodation/" role="button">Return to home</a>
 							</div>
 							
 						</div>

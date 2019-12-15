@@ -1,12 +1,13 @@
+<%@page import="DiningAccommodation.DiningOfferings"%>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<title>Pulse - Restaurant HTML Template</title>
+	<title>Delete Offering</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="Pulse Restaurant HTML Template">
 	<meta name="keywords" content="pulse, restaurant, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="..">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <base href="..">
 	<!-- Favicon -->   
 	<link href="img/favicon.ico" rel="shortcut icon"/>
 
@@ -26,6 +27,11 @@
 
 </head>
 <body>
+        <%
+            DiningOfferings off = new DiningOfferings();
+            off.getOfferings();
+            
+        %>
 	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
@@ -41,10 +47,10 @@
 	<!-- Hero section -->
 	<section class="hero-section">
 		<div class="hero-slider owl-carousel">
-			<div class="hs-item set-bg" data-setbg="img/slider/slider-2.jpg">
+			<div class="hs-item set-bg" data-setbg="img/slider/slider-1.jpg">
 				<div class="hs-content">
 					<div class="hsc-warp">
-						<h2>Search and display bookings<span>.</span></h2>
+						<h2>Delete an offering<span>.</span></h2>
 					</div>
 				</div>
 			</div>
@@ -58,24 +64,26 @@
 	<section class="inter-section spad">
 		<div class="container">
 			<div class="section-title">
-				<i class="flaticon-019-rib"></i>
-				<h2>Display booking details</h2>
+				<i class="flaticon-032-hamburger"></i>
+				<h2>Display offering details</h2>
 			</div>
-			<form name="searchbooking" action="gl_search/gl_searchprocessing_submit.jsp" method="POST" class="col-12">
-                <label for="bookingid">Booking ID</label>
-                <input type="text" class="col-md-12 border rounded" name="bookingid" id="bookingid">
-                <input type="submit" class="btn btn-secondary site-btn my-btn" name="search" value="Search Booking">
-            </form>
-
+                    <form name="searchoffering" action="m2/m2_deleteofferingsubmit.jsp" method="POST" class="col-12">
+                        <label for="offeringid">Input the offering ID</label>
+                        <select name="offeringid" class="form-control">
+                                 <%     int index;
+                                        int size = off.offers.size();
+                                        for (index=0; index < size; index++) { %>
+                                        <option class="col-md-12 border rounded" value="<%=off.offers.get(index) %>"> <%=off.offers.get(index) %> </option> 
+                                 <%     } 
+                                 %>               
+                        </select> 
+                        <input type="submit" class="btn btn-secondary site-btn my-btn" name="search" value="Delete Offer">
+                    </form>
 		</div>
+ 
 	</section>
+        
 	<!-- Intro section end -->
-
-
-
-	
-
-
 
 	<!--====== Javascripts & Jquery ======-->
 	<script src="js/jquery-3.2.1.min.js"></script>

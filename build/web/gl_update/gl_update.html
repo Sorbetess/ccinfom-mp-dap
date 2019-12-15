@@ -1,16 +1,11 @@
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import = "DiningAccommodation.*, java.util.*" %>
-<!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<title>Search Display</title>
+	<title>Pulse - Restaurant HTML Template</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="Pulse Restaurant HTML Template">
 	<meta name="keywords" content="pulse, restaurant, creative, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<base href="..">
 	<!-- Favicon -->   
 	<link href="img/favicon.ico" rel="shortcut icon"/>
 
@@ -30,60 +25,44 @@
 
 </head>
 <body>
-
-
 	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
-    </div>
+	</div>
+	
+	<!-- Header section -->
+	
 
-    <!-- Page info section -->
-	<section class="page-top-info set-bg" data-setbg="img/page-top-bg/2.jpg" id="booky">
+
+	<!-- Page info section -->
+	<section class="page-top-info set-bg" data-setbg="img/page-top-bg/1.jpg">
 		<div class="ptf-center">
 			<div class="container">
-				<h2>Offering details<span>.</span></h2>
+				<h2>Update booking<span>.</span></h2>
 			</div>
 		</div>
 	</section>
-        
+	<!-- Page info section end -->
 
 
+	<!-- Intro section -->
+	<section class="inter-section spad">
+		<div class="container">
+			<div class="section-title">
+				<i class="flaticon-019-rib"></i>
+				<h2>Which booking do you want to update?</h2>
+			</div>
+			<div class="row">
+                <label for="bookingno">Booking Number</label>
+				<input type="text" class="form-control" id="firstname" placeholder="Enter Booking Number" name ="firstname">
+			</div>
+		</div>
+	</section>
+	<!-- Intro section end -->
 
 
-    <div class="container">
-        
-        <div class="col-12">
-            <%
-        DiningOfferings off = new DiningOfferings();
-        off.offeringid = Integer.parseInt(request.getParameter("offeringid"));
-        try {
-            off.deleteOffering();
-        } catch (Exception e){
-            e.printStackTrace();
-            response.sendRedirect("/Dining_Accommodation/gl_create/gl_create_fail.html");
-        }%>      
-        <table class="table.table-striped" id="booktable">
-        <thead>
-          <tr>
-            <th scope="col">Offering ID</th>
-            <th scope="col">Offering Date</th>
-            <th scope="col">Status</th>
-            <th scope="col">Max Clients</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><%=off.offeringid%></td>
-            <td><%=off.offeringdate%></td>
-            <td><%=off.status%></td>
-            <td><%=off.maxclient%></td>
-          </tr>
-        </tbody>
-      </table> 
-        <a class="btn btn-secondary site-btn my-btn" href="../index.html" role="button">Return to home</a>
-        </div>
-       
-    </div>
+	
+
 
 	<!--====== Javascripts & Jquery ======-->
 	<script src="js/jquery-3.2.1.min.js"></script>
@@ -96,6 +75,7 @@
 	<!-- load for map -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0YyDTa0qqOjIerob2VTIwo_XVMhrruxo"></script>
 	<script src="js/map.js"></script>
+
 	
     </body>
 </html>

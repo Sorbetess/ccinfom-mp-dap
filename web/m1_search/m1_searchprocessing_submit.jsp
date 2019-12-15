@@ -47,7 +47,7 @@
         try {
           b.transno = Integer.parseInt(request.getParameter("transno"));
         }catch(Exception e) {
-          response.sendRedirect("http://localhost:8080/Dining_Accommodation/m1_create/m1_create_fail.html");
+          response.sendRedirect("/Dining_Accommodation/m1_create/m1_create_fail.html");
         }
         
         b.search();

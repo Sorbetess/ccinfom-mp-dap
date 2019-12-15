@@ -25,7 +25,8 @@ public class Booking {
     public ArrayList <String> emails = new ArrayList<String>();
     public ArrayList <String> bookings = new ArrayList<String>();
     public ArrayList <Country> report = new ArrayList<Country>();
-    public ArrayList <String> test = new ArrayList<String>();
+    public ArrayList <Integer> years = new ArrayList<Integer>();
+    public ArrayList <Integer> months = new ArrayList<Integer>();
     
    
     
@@ -48,6 +49,7 @@ public class Booking {
     
     public int reportMonth;
     public int reportYear;
+    
 
     
       
@@ -196,7 +198,7 @@ public class Booking {
                                         "WHERE cu.email IN (\n" +
                                         "	SELECT B.email\n" +
                                         "    FROM BOOKINGS B\n" +
-                                        "    WHERE YEAR(B.confirmdate) = ? AND MONTH(B.confirmdate) = ?\n" +
+                                        "    WHERE YEAR(B.bookdate) = ? AND MONTH(B.bookdate) = ?\n" +
                                         ")\n" +
                                         "GROUP BY addresscountry\n" +
                                         "ORDER BY Population DESC;");
@@ -306,7 +308,7 @@ public class Booking {
             emails.clear();
             while (rs.next()) {
                 emails.add(rs.getString("email"));
-                System.out.println(emails.get(emails.size()-1));
+
             }
             // 5. Disconnect
             stmt.close();
@@ -339,19 +341,62 @@ public class Booking {
         }
         
     }
+     
+     public void getBookingYears() {
+         try {
+            // 1. Connect to the database
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            Connection conn;
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=p@ssword");
+            // 2. Prepare the SQL Statement
+            PreparedStatement stmt = conn.prepareStatement("SELECT DISTINCT YEAR(bookdate) AS bookyear FROM diningaccommodations.bookings ORDER BY bookyear ASC");
+            // 3. Execute the SQL Statement
+            ResultSet rs = stmt.executeQuery();
+            // 4. Process the results
+            years.clear();
+            while (rs.next()) {
+                years.add(rs.getInt("bookyear"));
+            }
+            // 5. Disconnect
+            stmt.close();
+            conn.close();
+        } catch (Exception e) {
+            System.out.println("something went wrong: " + e.getMessage());
+        }              
+     }
+     
+     public void filterYears() {
+         try {
+            // 1. Connect to the database
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            Connection conn;
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=p@ssword");
+            // 2. Prepare the SQL Statement
+            PreparedStatement stmt = conn.prepareStatement("SELECT DISTINCT MONTH(bookdate) AS bookmonth FROM diningaccommodations.bookings WHERE YEAR(bookdate) = ? ORDER BY bookmonth");
+            stmt.setInt(1, reportYear);
+            // 3. Execute the SQL Statement
+            ResultSet rs = stmt.executeQuery();
+            // 4. Process the results
+            months.clear();
+            while (rs.next()) {
+                months.add(rs.getInt("bookmonth"));
+                System.out.println(months.get(months.size()-1));
+            }
+            // 5. Disconnect
+            stmt.close();
+            conn.close();
+        } catch (Exception e) {
+            System.out.println("something went wrong: " + e.getMessage());
+        }              
+     }
+     
+     
+     
+    
     
     
     public static void main(String args[]) {
-        Booking book = new Booking();
         
-        book.globalReport();
-        
-//        book.getOfferings();
-//        
-//        book.getGroups();
-//        
-//        book.getEmails();
-//        book.getNextBooking();
     }
 }
 

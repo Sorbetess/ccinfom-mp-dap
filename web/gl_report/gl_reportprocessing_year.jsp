@@ -1,12 +1,17 @@
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import = "DiningAccommodation.*, java.util.*" %>
+<!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<title>Report 3</title>
+	<title>Create Booking</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="Pulse Restaurant HTML Template">
 	<meta name="keywords" content="pulse, restaurant, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="..">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base href="..">
+	
 
 
 	<link rel="stylesheet" href="css/bootstrap.min.css"/>
@@ -17,9 +22,16 @@
 	<link rel="stylesheet" href="css/animate.css"/>
 
 
-
 </head>
 <body>
+
+	<% 
+        int year = Integer.parseInt(request.getParameter("year"));
+        Booking b = new Booking();
+        b.reportYear = year;
+        b.filterYears();
+ 
+        %>
 
 	<div id="preloder">
 		<div class="loader"></div>
@@ -53,16 +65,21 @@
 			</div>
             <form name="searchbooking" action="gl_report/gl_reportprocessing_submit.jsp" method="POST" class="col-12">
                 <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="year">Year</label>
-                        <input type="text" class="form-control" id="year" placeholder="YYYY" name="year">
-                    </div>
-                    <div class="form-group col-md-6">
-                            <label for="month">Month</label>
-                            <input type="text" class="form-control" id="ppplace" placeholder="MM" name="month">
+                    <div class="form-group col-md-12">
+                        <label for="year">Month</label>
+                        <select name="month" class="form-control">
+                            <%                           
+                            for(int i = 0; i < b.months.size(); i++) { %>
+                                <option value="<%=b.months.get(i)%>"> <%=b.months.get(i)%> </option>
+                            <% }
+                            %>
+                        </select>
+                        <input type="submit" class="btn btn-secondary site-btn my-btn" name="distyear" value="Get distribution">
+                        <input type="hidden" name="year" value=<%=year%>> 
+                         
                     </div>
                 </div>
-                 <input type="submit" class="btn btn-secondary site-btn my-btn" name="dist" value="Proceed">
+            
             </form>
            
 		</div>

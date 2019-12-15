@@ -5,8 +5,9 @@
 	<meta charset="UTF-8">
 	<meta name="description" content="Pulse Restaurant HTML Template">
 	<meta name="keywords" content="pulse, restaurant, creative, html">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Favicon -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="..">
+	<!-- Favicon -->   
 	<link href="img/favicon.ico" rel="shortcut icon"/>
 
 	<!-- Stylesheets -->
@@ -29,20 +30,28 @@
 	<div id="preloder">
 		<div class="loader"></div>
 	</div>
-
+	
 	<!-- Header section -->
+	<header class="header-section">
+		
+	</header>
+	<!-- Header section end -->
 
 
-
-	<!-- Page info section -->
-	<section class="page-top-info set-bg" data-setbg="img/page-top-bg/1.jpg">
-		<div class="ptf-center">
-			<div class="container">
-				<h2>Update booking<span>.</span></h2>
+	<!-- Hero section -->
+	<section class="hero-section">
+		<div class="hero-slider owl-carousel">
+			<div class="hs-item set-bg" data-setbg="img/slider/slider-2.jpg">
+				<div class="hs-content">
+					<div class="hsc-warp">
+						<h2>Search and display bookings<span>.</span></h2>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
-	<!-- Page info section end -->
+	<!-- Hero section end -->
+
 
 
 	<!-- Intro section -->
@@ -50,30 +59,21 @@
 		<div class="container">
 			<div class="section-title">
 				<i class="flaticon-019-rib"></i>
-				<h2>Which booking do you want to update?</h2>
+				<h2>Display booking details</h2>
 			</div>
-			<div class="row">
-                <label for="bookingno">Booking Number</label>
-				<input type="text" class="form-control" id="firstname" placeholder="Enter Booking Number" name ="firstname">
-			</div>
-            <form name="searchbooking" action="gl_report/gl_reportprocessing_submit.jsp" method="POST" class="col-12">
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="year">Year</label>
-                        <input type="text" class="form-control" id="year" placeholder="YYYY" name="year">
-                    </div>
-                    <div class="form-group col-md-6">
-                            <label for="month">Month</label>
-                            <input type="text" class="form-control" id="ppplace" placeholder="MM" name="month">
-                    </div>
-                </div>
+			<form name="searchbooking" action="gl_search/gl_searchprocessing_submit.jsp" method="POST" class="col-12">
+                <label for="bookingid">Booking ID</label>
+                <input type="text" class="col-md-12 border rounded" name="bookingid" id="bookingid">
+                <input type="submit" class="btn btn-secondary site-btn my-btn" name="search" value="Search Booking">
             </form>
-            <input type="submit" class="btn btn-secondary site-btn my-btn" name="book" value="Create Booking">
+
 		</div>
 	</section>
 	<!-- Intro section end -->
 
 
+
+	
 
 
 
@@ -88,7 +88,6 @@
 	<!-- load for map -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0YyDTa0qqOjIerob2VTIwo_XVMhrruxo"></script>
 	<script src="js/map.js"></script>
-
 
     </body>
 </html>

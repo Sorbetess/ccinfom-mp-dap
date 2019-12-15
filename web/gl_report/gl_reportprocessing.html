@@ -5,8 +5,9 @@
 	<meta charset="UTF-8">
 	<meta name="description" content="Pulse Restaurant HTML Template">
 	<meta name="keywords" content="pulse, restaurant, creative, html">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Favicon -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="..">
+	<!-- Favicon -->   
 	<link href="img/favicon.ico" rel="shortcut icon"/>
 
 	<!-- Stylesheets -->
@@ -29,10 +30,10 @@
 	<div id="preloder">
 		<div class="loader"></div>
 	</div>
-
+	
 	<!-- Header section -->
 	<header class="header-section">
-
+		
 	</header>
 	<!-- Header section end -->
 
@@ -40,18 +41,10 @@
 	<!-- Hero section -->
 	<section class="hero-section">
 		<div class="hero-slider owl-carousel">
-			<div class="hs-item set-bg" data-setbg="img/slider/slider-1.jpg">
-				<div class="hs-content">
-					<div class="hsc-warp">
-						<h2>Boodle Fight<span>.</span></h2>
-						<p id="dining">Dining Accommodation</p>
-					</div>
-				</div>
-			</div>
 			<div class="hs-item set-bg" data-setbg="img/slider/slider-2.jpg">
 				<div class="hs-content">
 					<div class="hsc-warp">
-						<h2>Dining acommodation.<span>.</span></h2>
+						<h2>Customer global distribution<span>.</span></h2>
 					</div>
 				</div>
 			</div>
@@ -66,40 +59,28 @@
 		<div class="container">
 			<div class="section-title">
 				<i class="flaticon-019-rib"></i>
-				<h2>Welcome</h2>
+				<h2>Enter month and year</h2>
 			</div>
-			<div class="row">
-				<div class="col-md-4 intro-item">
-					<h3>Group Leader</h3>
-					<a class="btn btn-secondary site-btn my-btn" href="gl_create/gl_createprocessing.jsp" role="button">Create Bookings</a>
-					<a class="btn btn-secondary site-btn my-btn" href="gl_update/gl_updateprocessing.jsp" role="button">Update Bookings</a>
-					<a class="btn btn-secondary site-btn my-btn" href="gl_search\gl_searchprocessing.jsp" role="button">Search Bookings</a>
-					<a class="btn btn-secondary site-btn my-btn" href="gl_report\gl_reportprocessing.html" role="button">Report</a>
-				</div>
-				<div class="col-md-4 intro-item">
-					<h3>Member 1</h3>
-					<a class="btn btn-secondary site-btn my-btn" href="" role="button">Create Bookings</a>
-					<a class="btn btn-secondary site-btn my-btn" href="" role="button">Update Bookings</a>
-					<a class="btn btn-secondary site-btn my-btn" href="" role="button">Search Bookings</a>
-					<a class="btn btn-secondary site-btn my-btn" href="" role="button">Report</a>
-
-				</div>
-				<div class="col-md-4 intro-item">
-					<h3>Member 3</h3>
-					<a class="btn btn-secondary site-btn my-btn" href="" role="button">Create Bookings</a>
-					<a class="btn btn-secondary site-btn my-btn" href="" role="button">Update Bookings</a>
-					<a class="btn btn-secondary site-btn my-btn" href="" role="button">Search Bookings</a>
-					<a class="btn btn-secondary site-btn my-btn" href="" role="button">Report</a>
-				</div>
-			</div>
-
+			<form name="searchbooking" action="gl_report/gl_reportprocessing_submit.jsp" method="POST" class="col-12">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="year">Year</label>
+                        <input type="text" class="form-control" id="year" placeholder="YYYY" name="year">
+                    </div>
+                    <div class="form-group col-md-6">
+                            <label for="ppplace">Month</label>
+                            <input type="text" class="form-control" id="ppplace" placeholder="MM" name="month">
+                    </div>
+                </div>
+            </form>
+            <input type="submit" class="btn btn-secondary btn-lg btn-block"></button>
 		</div>
 	</section>
 	<!-- Intro section end -->
 
 
 
-
+	
 
 
 

@@ -16,6 +16,8 @@ public class Booking {
     public ArrayList <String> emails = new ArrayList<String>();
     public ArrayList <String> bookings = new ArrayList<String>();
     
+   
+    
     public int bookingid;
     public double cost;
     public String bookdate;
@@ -32,8 +34,9 @@ public class Booking {
     
     public int status;
     public int nextBooking;
-    
-    
+
+    ArrayList<Country> populationReport = new ArrayList<>(); 
+      
    
     
     public void book() {
@@ -88,27 +91,7 @@ public class Booking {
             getNextBooking();  
             PreparedStatement stmt = conn.prepareStatement("UPDATE bookings SET cost = ?, bookdate = ?, confirmdate = ?, savedate = ?, canceldate = ?, refunddate = ?, paiddate = ?, rating = ?, feedback = ?, email = ?, groupid = ?, diningofferid = ? WHERE bookingid = ?") ;
             
-//            if(groupid != 0){
-//                stmt = conn.prepareStatement("UPDATE bookings SET cost = ?, bookdate = ?, confirmdate = ?, savedate = ?, canceldate = ?, refunddate = ?, paiddate = ?, rating = ?, feedback = ?, email = ?, groupid = ?, diningofferid = ? WHERE bookingid = ?") ; 
-//                stmt.setDouble(1, cost);
-//                stmt.setString(2, bookdate);
-//                stmt.setString(3, confirmdate);
-//                stmt.setString(4, savedate);
-//                stmt.setString(5, canceldate);
-//                stmt.setString(6, refunddate);
-//                stmt.setString(7, paiddate);
-//                stmt.setInt(8, rating);
-//                stmt.setString(9, feedback);
-//                stmt.setString(10, email);
-//                stmt.setInt(11, groupid);
-//                stmt.setInt(12, diningoffid);
-//                stmt.setInt(13, bookingid);
-//            }
-//            else {
-//                
-//                
-//               
-//            }
+
             stmt = conn.prepareStatement("UPDATE bookings SET cost = ?, bookdate = ?, confirmdate = ?, savedate = ?, canceldate = ?, refunddate = ?, paiddate = ?, rating = ?, feedback = ?, email = ?, groupid = ?, diningofferid = ? WHERE bookingid = ?") ; 
                 stmt.setDouble(1, cost);
                 stmt.setString(2, bookdate);
@@ -130,7 +113,6 @@ public class Booking {
             
             
              
-  
             // 3. Execute the SQL Statement
             stmt.executeUpdate();
             // 4. Process the results
@@ -144,7 +126,81 @@ public class Booking {
         }
     }
     
+    public void search() {
+        try {
+            // 1. Connect to the database
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            Connection conn;
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=p@ssword");
+            // 2. Prepare the SQL Statement
+            PreparedStatement stmt = conn.prepareStatement("SELECT cost AS cost, bookdate AS bookdate, confirmdate AS confirmdate, savedate AS savedate, canceldate AS canceldate, refunddate AS refunddate, paiddate AS paiddate, rating AS rating, feedback AS feedback, email AS email, groupid AS groupid, diningofferid as diningofferid FROM bookings WHERE bookingid=?");
+            stmt.setInt(1, bookingid);
+            // 3. Execute the SQL Statement
+            ResultSet rs = stmt.executeQuery();
+            // 4. Process the results
+            offers.clear();
+            if(rs.next()) {
+                cost = rs.getDouble("cost");
+                bookdate = rs.getString("bookdate");
+                confirmdate = rs.getString("confirmdate");
+                savedate = rs.getString("savedate");
+                canceldate = rs.getString("canceldate");
+                refunddate = rs.getString("refunddate");
+                paiddate = rs.getString("paiddate");
+                rating = rs.getInt("rating");
+                feedback = rs.getString("feedback");
+                email = rs.getString("email");
+                groupid = rs.getInt("groupid");
+                diningoffid = rs.getInt("diningofferid");
+            }
+            // 5. Disconnect
+            stmt.close();
+            conn.close();
+            status = 1;
+        } catch (Exception e) {
+            status = 0;
+            System.out.println("something went wrong: " + e.getMessage());
+        }
+    }
     
+    public void globalReport(int month, int year) {
+  
+        
+        try {
+            // 1. Connect to the database
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            Connection conn;
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=p@ssword");
+            // 2. Prepare the SQL Statement
+            PreparedStatement stmt = conn.prepareStatement
+                                     ("  SELECT addresscountry AS country, COUNT(addresscountry) AS Population\n" +
+                                        "FROM client_users cu\n" +
+                                        "WHERE cu.email IN (\n" +
+                                        "	SELECT email\n" +
+                                        "    FROM BOOKINGS B\n" +
+                                        "    WHERE YEAR(B.confirmdate) = ? AND MONTH(B.confirmdate) = ?\n" +
+                                        ")\n" +
+                                        "GROUP BY addresscountry\n" +
+                                        "ORDER BY Population DESC;");
+            stmt.setInt(1, year);
+            stmt.setInt(2, month);
+            // 3. Execute the SQL Statement
+            ResultSet rs = stmt.executeQuery();
+            // 4. Process the results
+            offers.clear();
+            while (rs.next()) {
+                populationReport.add(new Country(rs.getString("country"), rs.getInt("Population")));
+            }
+            // 5. Disconnect
+            stmt.close();
+            conn.close();
+            status = 1;
+        } catch (Exception e) {
+            System.out.println("something went wrong" + e.getMessage());
+            status = 0;
+        }     
+        
+    }
     
     
     public void getOfferings() {
@@ -265,7 +321,7 @@ public class Booking {
     }
     
     
-    public static void main(String args[]) {
+                                            public static void main(String args[]) {
         Booking book = new Booking();
 //        book.getOfferings();
 //        

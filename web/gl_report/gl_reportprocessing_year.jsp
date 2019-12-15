@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<title>Create Booking</title>
+	<title>Report 3</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="Pulse Restaurant HTML Template">
 	<meta name="keywords" content="pulse, restaurant, creative, html">

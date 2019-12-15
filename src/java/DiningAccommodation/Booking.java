@@ -262,7 +262,6 @@ public class Booking {
             groups.clear();
             while (rs.next()) {
                 groups.add(rs.getString("groupid"));
-                System.out.println(groups.get(groups.size()-1));
             }
             // 5. Disconnect
             stmt.close();

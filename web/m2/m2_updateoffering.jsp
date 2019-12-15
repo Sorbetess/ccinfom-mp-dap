@@ -69,7 +69,7 @@
     <!-- Page info section end -->
     
     <!-- Featured section -->
-	<section class="featured-section set-bg" data-setbg="img\featured-bg.jpg">
+	<section class="featured-section set-bg" data-setbg="img/featured-bg.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 offset-lg-6 featured">
@@ -117,5 +117,14 @@
                 </div>
             </div>
 	</section>
+                               
+        <script type="javascript" src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/circle-progress.min.js"></script>
+	<script src="js/main.js"></script>
+        
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0YyDTa0qqOjIerob2VTIwo_XVMhrruxo"></script>
+	<script src="js/map.js"></script>
     </body>
 </html>

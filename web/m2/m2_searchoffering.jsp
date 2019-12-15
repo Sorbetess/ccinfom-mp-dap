@@ -64,8 +64,8 @@
 	<section class="inter-section spad">
 		<div class="container">
 			<div class="section-title">
-				<i class="flaticon-019-rib"></i>
-				<h2>Display booking details</h2>
+				<i class="flaticon-036-bacon"></i>
+				<h2>Display offering details</h2>
 			</div>
                     <form name="searchoffering" action="m2/m2_searchdisplay.jsp" method="POST" class="col-12">
                         <label for="offeringid">Input the offering ID</label>
@@ -77,7 +77,7 @@
                                  <%     } 
                                  %>               
                         </select> 
-                        <input type="submit" class="btn btn-secondary site-btn my-btn" name="search" value="Search Offer">
+                           <input type="submit" class="btn btn-secondary site-btn my-btn" name="search" value="Search Offer">
                     </form>
 		</div>
 	</section>

@@ -41,7 +41,7 @@
 	<section class="page-top-info set-bg" data-setbg="img/page-top-bg/2.jpg" id="booky">
 		<div class="ptf-center">
 			<div class="container">
-				<h2>Offering details<span>.</span></h2>
+                            <h2>Successfully deleted<span>.</span></h2>
 			</div>
 		</div>
 	</section>
@@ -54,34 +54,22 @@
         
         <div class="col-12">
             <%
-        DiningOfferings off = new DiningOfferings();
-        off.offeringid = Integer.parseInt(request.getParameter("offeringid"));
-        try {
-            off.deleteOffering();
-        } catch (Exception e){
-            e.printStackTrace();
-            response.sendRedirect("http://localhost:8084/Dining_Accommodation/gl_create/gl_create_fail.html");
-        }%>      
-        <table class="table.table-striped" id="booktable">
-        <thead>
-          <tr>
-            <th scope="col">Offering ID</th>
-            <th scope="col">Offering Date</th>
-            <th scope="col">Status</th>
-            <th scope="col">Max Clients</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><%=off.offeringid%></td>
-            <td><%=off.offeringdate%></td>
-            <td><%=off.status%></td>
-            <td><%=off.maxclient%></td>
-          </tr>
-        </tbody>
-      </table> 
-        <a class="btn btn-secondary site-btn my-btn" href="http://localhost:8084/Dining_Accommodation/" role="button">Return to home</a>
+                DiningOfferings off = new DiningOfferings();
+                try { 
+                    off.offeringid = Integer.parseInt(request.getParameter("offeringid"));
+                    off.deleteOffering();
+                } catch (Exception e){
+                    e.printStackTrace();
+                    response.sendRedirect("http://localhost:8084/Dining_Accommodation/gl_create/gl_create_fail.html");
+                }
+            %>
+        
         </div>
+        <div class="container">
+             <div class = "col-md-12 intro-item">
+                <a class="btn btn-secondary site-btn my-btn" href="http://localhost:8084/Dining_Accommodation/" role="button">Return to home</a>
+        </div>
+    </div>
        
     </div>
 

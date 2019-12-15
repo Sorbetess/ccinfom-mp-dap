@@ -119,18 +119,25 @@ public class DiningOfferings {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/diningaccommodations?useTimezone=true&serverTimezone=UTC&user=admin&password=12345");
             // 2. Prepare the SQL Statement
             // 3. Execute the SQL Statement
-            PreparedStatement stmt = conn.prepareStatement("DELETE FROM DININGOFFERINGS WHERE offeringid = ?");
+            PreparedStatement stmt = conn.prepareStatement("SET FOREIGN_KEY_CHECKS = OFF");
+            stmt.executeUpdate();
+            stmt = conn.prepareStatement("DELETE FROM DININGOFFERINGS WHERE offeringid = ?");
             stmt.setInt(1, offeringid);
-            stmt.executeQuery();
-            stmt = conn.prepareStatement("DELETE FROM FOODITEMS WHERE menuid IN (SELECT menuid FROM MENUS WHERE offeringid = ?)");
+            stmt.executeUpdate();
+            stmt = conn.prepareStatement("DELETE FROM FOODITEMS WHERE menuid IN (SELECT menuid FROM MENUS WHERE diningofferid = ?)");
             stmt.setInt(1, offeringid);
-            stmt.executeQuery();
-            stmt = conn.prepareStatement("DELETE FROM MENUS WHERE offeringid = ?");
+            stmt.executeUpdate();
+            stmt = conn.prepareStatement("DELETE FROM MENUS WHERE diningofferid = ?");
             stmt.setInt(1, offeringid);
-            stmt.executeQuery();
-            stmt = conn.prepareStatement("DELETE FROM BOOKINGS WHERE offeringid = ?");
+            stmt.executeUpdate();
+            stmt = conn.prepareStatement("DELETE FROM TRANSACTIONS WHERE bookingid IN (SELECT bookingid FROM BOOKINGS WHERE diningofferid = ?)");
             stmt.setInt(1, offeringid);
-            stmt.executeQuery();
+            stmt.executeUpdate();
+            stmt = conn.prepareStatement("DELETE FROM BOOKINGS WHERE diningofferid = ?");
+            stmt.setInt(1, offeringid);
+            stmt.executeUpdate();
+            stmt = conn.prepareStatement("SET FOREIGN_KEY_CHECKS = ON");
+            stmt.executeUpdate();
             // 4. Process the results
             success_status = 1;
             // 5. Disconnect

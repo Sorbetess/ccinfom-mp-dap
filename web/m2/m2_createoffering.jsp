@@ -23,7 +23,7 @@
 	<script src="js/circle-progress.min.js"></script>
 	<script src="js/main.js"></script>
         
-        <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.css"/>
+        <!--<link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.css"/>-->
         <link rel="stylesheet" href="css/bootstrap.min.css"/>
         <link rel="stylesheet" href="css/font-awesome.min.css"/>
 	<link rel="stylesheet" href="css/flaticon.css"/>
@@ -39,17 +39,14 @@
                 });
             });
         </script>
+        
     </head>
+    
     <body> 
 	<!-- Page Preloader -->
 	<div id="preloader">
             <div class="loader"></div>
 	</div>
-	
-	<!-- Header section -->
-	<header class="header-section">
-	
-	</header>
 	<!-- Header section end -->
 
 
@@ -92,5 +89,14 @@
                 </div>
             </div>
 	</section>
+    
+        <script type="javascript" src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/circle-progress.min.js"></script>
+	<script src="js/main.js"></script>
+        
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0YyDTa0qqOjIerob2VTIwo_XVMhrruxo"></script>
+	<script src="js/map.js"></script>
     </body>
 </html>

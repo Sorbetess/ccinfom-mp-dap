@@ -46,22 +46,19 @@
     
     <%
         DiningOfferings off = new DiningOfferings();
-        System.out.print(request.getParameter("date"));
         
-        off.offeringid = Integer.parseInt(request.getParameter("id"));
-        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("date"));
-        off.offeringdate = new java.sql.Date(date.getTime());
-        off.status = request.getParameter("category");
-        off.maxclient = Integer.parseInt(request.getParameter("maxclient"));
-        
-        off.updateOffering();
-        
-        String redirectURL;
-        if (off.success_status==1)
-            redirectURL = "http://localhost:8084/Dining_Accommodation/gl_create/gl_create_success.html";
-        else
-            redirectURL = "http://localhost:8084/Dining_Accommodation/gl_create/gl_create_fail.html";
-        response.sendRedirect(redirectURL);
+        try {
+            off.offeringid = Integer.parseInt(request.getParameter("id"));
+            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("date"));
+            off.offeringdate = new java.sql.Date(date.getTime());
+            off.status = request.getParameter("category");
+            off.maxclient = Integer.parseInt(request.getParameter("maxclient"));
+            off.updateOffering();
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect("http://localhost:8084/Dining_Accommodation/gl_create/gl_create_fail.html");
+        }
+        response.sendRedirect("http://localhost:8084/Dining_Accommodation/gl_create/gl_create_success.html");
     %>
 	
 

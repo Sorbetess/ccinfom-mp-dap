@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<title>Pulse - Restaurant HTML Template</title>
+	<title>Create Booking</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="Pulse Restaurant HTML Template">
 	<meta name="keywords" content="pulse, restaurant, creative, html">
@@ -73,15 +73,14 @@
 				<div class="col-lg-6 offset-lg-6 featured">
 					<div class="section-title st-no-style text-left">
 						<i class="flaticon-022-tray"></i>
-						<h2 class="p-0">We'll look for what you want.</h2>
+						<h2 class="p-0">Enter the details.</h2>
 						
                         
 						<form name="createbooking" action="gl_create/gl_createprocessing_submit.jsp" method="POST">
 							<br>
                             <label for="offeringselector">Dining offering</label>
-                            <select name="offeringselector">
+                            <select name="offeringselector" class="form-control">
 									<%                            
-						
 									int size = book.offers.size();
 									for(int i = 0; i < size; i++) { %>
 										<option value="<%=book.offers.get(i)%>"> <%=book.offers.get(i)%> </option>
@@ -110,7 +109,7 @@
 
 							<br>
                             <label for="rating">Rating</label>
-							<select name="rating">
+							<select name="rating" class="form-control">
 								<option value=1>1</option>
 								<option value=2>2</option>
 								<option value=3>3</option>
@@ -125,7 +124,7 @@
 							
 							<br>
                             <label for="groupselector">Group booking</label>
-							<select name="groupselector">
+							<select name="groupselector" class="form-control">
 								<option value=0>Not a group booking</option>
 								<%                            
 								int groupsize = book.groups.size();
@@ -137,7 +136,7 @@
 
 							<br>
                             <label for="userselector">User email</label>
-							<select name="userselector">
+							<select name="userselector" class="form-control">
 								<%                            
 								int usersize = book.emails.size();
 								for(int i = 0; i < usersize; i++) { %>
